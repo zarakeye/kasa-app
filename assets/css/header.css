@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo_container {
+  width: 145px;
+}
+
+nav a {
+  display: flex;
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  text-decoration: none;
+  -moz-column-gap: 26px;
+       column-gap: 26px;
+}
+nav a.active {
+  text-decoration: underline;
+}

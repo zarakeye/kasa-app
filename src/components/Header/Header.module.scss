@@ -1,0 +1,31 @@
+@use '../../utils/styles/abstracts' as *;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo_container {
+  width: 145px;
+}
+
+ul {
+  display: flex;
+  font-weight: $weight-medium;
+  font-size: $xs;
+  column-gap: 26px;
+  a {
+    color: $text-color;
+    text-decoration: none;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Breakpoints
+@media screen and (min-width: 768px) {
+  
+}

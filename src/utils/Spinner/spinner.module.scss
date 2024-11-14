@@ -1,0 +1,21 @@
+@use '../../utils/styles/abstracts' as *;
+
+@keyframes rotate{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+div {
+
+  padding: 10px;
+  border: 6px solid $main-color;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+  height: 0;
+  width: 0;
+}

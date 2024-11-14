@@ -1,0 +1,25 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo_container {
+  width: 145px;
+}
+
+ul {
+  display: flex;
+  font-weight: 500;
+  font-size: 12px;
+  -moz-column-gap: 26px;
+       column-gap: 26px;
+}
+ul a {
+  color: #000000;
+  text-decoration: none;
+}
+ul a.active {
+  text-decoration: underline;
+}
