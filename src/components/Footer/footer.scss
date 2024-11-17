@@ -1,0 +1,24 @@
+@use '../../utils/styles/abstracts' as *;
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 209px;
+  background-color: $text-color;
+} 
+
+.logo-footer_container {
+  display: flex;
+  justify-content: center;
+  width: 33.33%;
+}
+
+.copyright {
+  width: 33.33%;
+  text-align: center;
+  color: $complementary-text-color;
+  font-weight: $weight-medium;
+  font-size: $xs;
+}

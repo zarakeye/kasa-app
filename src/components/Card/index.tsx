@@ -1,4 +1,4 @@
-import './card.module.scss'
+import './card.scss'
 
 interface CardProps {
  location: {

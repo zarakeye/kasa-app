@@ -4,11 +4,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
 }
 
-.logo_container {
-  width: 145px;
+.app-logo{
+  width: 100%;
+  &_container {
+    width: 145px;
+  }
 }
 
 ul {
@@ -18,6 +21,7 @@ ul {
   column-gap: 26px;
   a {
     color: $text-color;
+    text-transform: uppercase;
     text-decoration: none;
     &.active {
       text-decoration: underline;

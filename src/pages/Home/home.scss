@@ -1,5 +1,74 @@
 @use '../../utils/styles/abstracts' as *;
 
+.slogan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $complementary-text-color;
+  text-align: center;
+  height: 111px;
+  overflow: hidden;
+  border-radius: 10px;
+
+  &_img {
+    &_container, &_filter {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &_container {
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    &_filter {
+      z-index: 2;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+
+    width: 100%;
+    object-fit: cover;
+    object-position: O -100px;
+  }
+
+  &_text {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: $weight-bold;
+    font-size: $xl;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .cards_container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.spinner_container {
+  display: flex;
+  justify-content: center;
 }

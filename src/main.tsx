@@ -5,6 +5,7 @@ import './index.scss'
 
 import Home from './pages/Home'
 import About from './pages/About'
+import Location from './pages/Location'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/location/:locationId" element={<Location />} />
         {/* <Route path="*" element={<Home />} /> */}
       </Routes>
     </Router>
