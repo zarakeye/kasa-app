@@ -1,10 +1,13 @@
 footer {
+  position: sticky;
   display: flex;
+  bottom: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 209px;
   background-color: #000000;
+  z-index: 100;
 }
 
 .logo-footer_container {

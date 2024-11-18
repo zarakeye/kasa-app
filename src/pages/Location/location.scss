@@ -1,0 +1,98 @@
+@use '../../utils/styles/abstracts' as *;
+
+.location {
+  display: flex;
+  flex-direction: column;
+
+  &_carrousel {
+    width: 335px;
+    height: 255px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    
+    &_img {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  &_title {
+    font-size: $l;
+    font-weight: $weight-medium;
+    margin-bottom: 5px;
+    color: $main-color;
+  }
+
+  &_location {
+    font-size: $m;
+    font-weight: $weight-medium;
+    color: $text-color;
+  }
+
+  
+  &_tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px
+  }
+
+  &_tag {
+    justify-content: center;
+    align-items: center;
+    width: 84px;
+    height: 18px;
+    font-size: 10px;
+    font-weight: $weight-bold;
+    color: $complementary-text-color;
+    background-color: $main-color;
+    border-radius: 5px;
+    padding: 3px 30px;
+    margin-right: 10px;
+  }
+
+  &_host {
+    display: flex;
+    flex-direction: row;
+
+    &_name {
+      flex-direction: column;
+      text-align: right;
+      font-size: $xs;
+      font-weight: $weight-medium;
+      color: $main-color;
+      margin-right: 10px;
+    }
+
+    &_portrait {
+      width: 100%;
+      border-radius: 50%;
+      &_wrapper {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+    }
+
+    &_eval {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      margin-bottom: 13px;
+    }
+  }
+
+  &_rating {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &_rate {
+    height: 13px;
+  }
+}

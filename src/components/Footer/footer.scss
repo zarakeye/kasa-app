@@ -1,12 +1,15 @@
 @use '../../utils/styles/abstracts' as *;
 
 footer {
+  position: sticky;
   display: flex;
+  bottom: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 209px;
   background-color: $text-color;
+  z-index: 100;
 } 
 
 .logo-footer_container {

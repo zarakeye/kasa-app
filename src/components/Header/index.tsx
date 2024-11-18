@@ -4,7 +4,7 @@ import './header.scss'
 
 const Header = (): JSX.Element => {
   return (
-    <header>
+    <header className="header">
       <div className='app-logo_container'>
         <img src={logo} className="app-logo" alt="logo" />
       </div>

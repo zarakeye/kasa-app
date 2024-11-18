@@ -1,30 +1,40 @@
 import { useEffect, useState } from "react";
+import './dropdown.scss';
+import chevron from '../../assets/pictures/chevron.svg'
 
 interface DropdownProps {
   title: string;
-  children: React.ReactNode;
+  content: React.ReactNode;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({title, children}): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
+  const [isOpen, setIsOpen] = useState<string>('');
 
   useEffect(() => {
-    const dropdownContent = document.querySelector('.dropdown_content');
+    const dropdownArrow = document.querySelector('.dropdown_arrow');
     
     if (isOpen) {
-      dropdownContent?.classList.add('visible');
+      dropdownArrow?.classList.add('open');
     } else {
-      dropdownContent?.classList.remove('visible');
+      dropdownArrow?.classList.remove('open');
     }
   }, [isOpen]);
 
+  const handleClick = () => {
+    if (isOpen.length > 0) {
+      setIsOpen('')
+    } else{
+      setIsOpen(title);
+    }
+  }
+
   return (
     <aside className="dropdown">
-      <header className="dropdown_header" onClick={() => setIsOpen(!isOpen)}>
+      <header className="dropdown_header" onClick={() => handleClick()}>
         <h3 className="dropdown_title">{title}</h3>
-        <span className="dropdown_arrow"></span>
+        <img className='dropdown_arrow' src={chevron} alt="flèche" />
       </header>
-      <div className={`dropdown_content ${isOpen ? 'visible' : ''}`}>{children}</div>
+      <div className='dropdown_content'>{(isOpen.length > 0) && content}</div>
       
     </aside>
   )

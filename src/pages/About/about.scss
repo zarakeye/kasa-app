@@ -1,0 +1,24 @@
+.about {
+  &_image {
+    &_container {
+      position: relative;
+      width: 335px;
+      height: 111px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    &_filter {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}

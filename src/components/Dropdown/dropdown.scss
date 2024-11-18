@@ -1,0 +1,69 @@
+@use '../../utils/styles/abstracts' as *;
+
+@keyframes halfRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  
+  &_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $main-color;
+    line-height: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 12.5px;
+    border-radius: 10px;
+  }
+
+  &_title {
+    cursor: pointer;
+    font-size: $s;
+    font-weight: $weight-bold;
+    color: $complementary-text-color;
+  }
+
+  &_arrow {
+    height: 10px;
+    &.open {
+      animation: halfRotate 0.2s ease-in-out forwards;
+    }
+  }
+
+  &_content {
+    color: $text-color;
+
+    ul, p {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      font-size: $xs;
+      padding-top: 13px;
+      padding-left: 20px;
+      // padding-bottom: 19px;
+      padding-right: 20px;
+    }
+
+    li {
+      font-size: $xs;
+      font-weight: $weight-regular;
+    }
+  }
+
+
+
+  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
