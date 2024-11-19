@@ -8,7 +8,7 @@
   color: $complementary-text-color;
   text-align: center;
   height: 111px;
-  overflow: hidden;
+  overflow: clip;
   border-radius: 10px;
 
   &_img {
@@ -23,7 +23,7 @@
 
     &_container {
       z-index: 1;
-      overflow: hidden;
+      overflow: clip;
     }
 
     &_filter {
@@ -47,13 +47,13 @@
   }
 }
 
-.sr-only {
+.sr_only {
   position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: hidden;
+  overflow: clip;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }

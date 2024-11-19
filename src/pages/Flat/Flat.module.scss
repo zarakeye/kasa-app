@@ -1,21 +1,25 @@
 @use '../../utils/styles/abstracts' as *;
 
-.location {
+.flat {
   display: flex;
   flex-direction: column;
 
-  &_carrousel {
+  &_carousel {
     width: 335px;
     height: 255px;
     border-radius: 10px;
     margin-bottom: 15px;
-    overflow: hidden;
+    overflow: clip;
     
     &_img {
       height: 100%;
       object-fit: cover;
       border-radius: 10px;
     }
+  }
+
+  &_resume {
+    margin-top: 15px;
   }
 
   &_title {

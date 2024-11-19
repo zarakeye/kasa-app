@@ -1,8 +1,8 @@
-import './spinner.scss'
+import style from './Spinner.module.scss'
 
 const Spinner = (): JSX.Element => {
   return (
-    <div className="spinner"></div>
+    <div className={style.spinner}></div>
   )
 }
 

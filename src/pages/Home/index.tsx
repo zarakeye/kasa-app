@@ -1,12 +1,12 @@
 import Card from "../../components/Card"
-import useLocationsData from "../../hooks/useLocationsData"
+import useFlatsData from "../../hooks/useFlatsData"
 import Spinner from "../../utils/Spinner"
 import landscape from '../../assets/pictures/landscape.png'
-import './home.scss'
+import style from './Home.module.scss'
 import { Link } from "react-router-dom"
 
 const Home = (): JSX.Element => {
-  const { locationsData, isDataLoading, error } = useLocationsData();
+  const { flatsData, isDataLoading, error } = useFlatsData();
 
   if (error) {
     return <div>Une erreur ${error} est survenue durant le chargement des données</div>
@@ -14,27 +14,27 @@ const Home = (): JSX.Element => {
 
   return (
     <>
-      <div className='slogan'>
-        <div className='slogan_img_container'>
-          <img src={landscape} alt="slogan" className="slogan_img" />
+      <div className={style.slogan}>
+        <div className={style.slogan_img_container}>
+          <img src={landscape} alt="slogan" className={style.slogan_img} />
         </div>
 
-        <div className='slogan_img_filter'></div>
-        <p className="slogan_text">Chez vous, partout et ailleurs</p>
+        <div className={style.slogan_img_filter}></div>
+        <p className={style.slogan_text}>Chez vous, partout et ailleurs</p>
       </div>
       {isDataLoading ? (
-        <div className="spinner_container">
+        <div className={style.spinner_container}>
           <Spinner />
         </div>
       ) : (
         <>
-          <h1 className="sr-only">Liste de locations</h1>
-          <div className="cards_container">
-            {locationsData.map((location) => (
-              <Link to={`/location/${location.id}`} key={location.id}>
+          <h1 className={style.sr_only}>Liste de locations</h1>
+          <div className={style.cards_container}>
+            {flatsData.map((flat) => (
+              <Link to={`/flat/${flat.id}`} key={flat.id}>
                 <Card
-                  key={location.id}
-                  location={location}
+                  key={flat.id}
+                  flat={flat}
                 />
               </Link>
             ))}

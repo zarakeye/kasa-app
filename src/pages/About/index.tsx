@@ -1,6 +1,6 @@
 import landscape from '../../assets/pictures/landscape_2.png'
 import Dropdown from '../../components/Dropdown'
-import './about.scss'
+import style from './About.module.scss'
 
 const About = (): JSX.Element => {
   const fiabilityContent: JSX.Element = (
@@ -29,10 +29,10 @@ const About = (): JSX.Element => {
 
   return (
     <>
-      <h1 className="sr-only">À propos</h1>
-      <div className="about_image_container">
-        <img src={landscape} alt="paysage" className="about_image" />
-        <div className="about_image_filter"></div>
+      <h1 className={style.sr0nly}>À propos</h1>
+      <div className={style.about_image_container}>
+        <img src={landscape} alt="paysage" className={style.about_image} />
+        <div className={style.about_image_filter}></div>
       </div>
 
       <Dropdown title='Fiabilité' content={fiabilityContent} />

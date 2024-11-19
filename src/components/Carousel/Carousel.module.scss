@@ -1,0 +1,39 @@
+@use '../../utils/styles/abstracts' as *;
+
+.carousel {
+  position: relative;
+  display: flex;
+  overflow: clip;
+  width: 335px;
+  height: 255px;
+  border-radius: 10px;
+
+  &_image {
+    // height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  &_button {
+    &_previous, &_next {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      z-index: 1;
+      border: none;
+      background-color: transparent;
+    }
+    &_previous {
+      left: 0px;
+    }
+    &_next {
+      right: 0px;
+    }
+  }
+}

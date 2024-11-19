@@ -1,5 +1,5 @@
 import React from 'react'
-import './LoaderWrapper.scss'
+import style from './LoaderWrapper.module.scss'
 
 interface LoaderWrapperProps {
   children: React.ReactNode
@@ -7,7 +7,7 @@ interface LoaderWrapperProps {
 
 const LoaderWrapper: React.FC<LoaderWrapperProps> = ({children}) => {
   return (
-    <div className="loader_wrapper">
+    <div className={style.loader_wrapper}>
       {children}
     </div>
   )

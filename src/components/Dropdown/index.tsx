@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './dropdown.scss';
+import style from './Dropdown.module.scss';
 import chevron from '../../assets/pictures/chevron.svg'
 
 interface DropdownProps {
@@ -29,12 +29,12 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   }
 
   return (
-    <aside className="dropdown">
-      <header className="dropdown_header" onClick={() => handleClick()}>
-        <h3 className="dropdown_title">{title}</h3>
-        <img className='dropdown_arrow' src={chevron} alt="flèche" />
+    <aside className={style.dropdown}>
+      <header className={style.dropdown_header} onClick={() => handleClick()}>
+        <h3 className={style.dropdown_title}>{title}</h3>
+        <img className={style.dropdown_arrow} src={chevron} alt="flèche" />
       </header>
-      <div className='dropdown_content'>{(isOpen.length > 0) && content}</div>
+      <div className={style.dropdown_content}>{(isOpen.length > 0) && content}</div>
       
     </aside>
   )

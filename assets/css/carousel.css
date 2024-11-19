@@ -1,0 +1,33 @@
+.carousel {
+  position: relative;
+  display: flex;
+  overflow: clip;
+  width: 335px;
+  height: 255px;
+  border-radius: 10px;
+}
+.carousel_image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.carousel_button_previous, .carousel_button_next {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  border: none;
+  background-color: transparent;
+}
+.carousel_button_previous {
+  left: 0px;
+}
+.carousel_button_next {
+  right: 0px;
+}

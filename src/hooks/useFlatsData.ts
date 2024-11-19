@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Define the Location type within the hook file
-export interface Location {
+export interface Flat {
   id: string;
   title: string;
   cover: string;
@@ -17,28 +17,28 @@ export interface Location {
   tags: string[];
 }
 
-interface UseLocationDataReturn {
-  locationsData: Location[];
+interface UseFlatDataReturn {
+  flatsData: Flat[];
   isDataLoading: boolean;
   error: string | null;
   refetch: () => Promise<void>; 
 }
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5173";
-const LOCATIONS_ENDPOINT = "/datas/locations.json";
+const FLATS_ENDPOINT = "/datas/flats.json";
 
 // Custom hook for fetching location data
-const useLocationsData = (initialData: Location[] = []): UseLocationDataReturn => {
-  const [locationsData, setLocationsData] = useState<Location[]>(initialData);
+const useLocationsData = (initialData: Flat[] = []): UseFlatDataReturn => {
+  const [flatsData, setFlatsData] = useState<Flat[]>(initialData);
   const [isDataLoading, setDataLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchLocations = async (signal?: AbortSignal) => {
+  const fetchFlats = async (signal?: AbortSignal) => {
     setDataLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`${BASE_URL}${LOCATIONS_ENDPOINT}`, { signal,
+      const response = await fetch(`${BASE_URL}${FLATS_ENDPOINT}`, { signal,
         headers: {
           "Accept": "application/json",
         }
@@ -52,13 +52,13 @@ const useLocationsData = (initialData: Location[] = []): UseLocationDataReturn =
         throw new Error('Le contenu n\'est pas du JSON valide.');
       }
 
-      const data: Location[] = await response.json();
+      const data: Flat[] = await response.json();
 
       if (!Array.isArray(data)) {
         throw new Error('Le formattage des données est invalide.');
       }
 
-      setLocationsData(data);
+      setFlatsData(data);
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") {
         console.log("Fetch aborted");
@@ -75,16 +75,16 @@ const useLocationsData = (initialData: Location[] = []): UseLocationDataReturn =
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchLocations(controller.signal);
+    fetchFlats(controller.signal);
 
     return () => {
       controller.abort();
     };
   }, []);
 
-  const refetch = () => fetchLocations();
+  const refetch = () => fetchFlats();
 
-  return { locationsData, isDataLoading, error, refetch };
+  return { flatsData, isDataLoading, error, refetch };
 };
 
 export default useLocationsData;

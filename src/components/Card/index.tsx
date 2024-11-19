@@ -1,19 +1,19 @@
-import './card.scss'
+import style from './Card.module.scss'
 
 interface CardProps {
- location: {
+ flat: {
    id: string,
    title: string,
    cover: string
  }
 }
 
-const Card: React.FC<CardProps> = ({location}): JSX.Element => {
+const Card: React.FC<CardProps> = ({flat}): JSX.Element => {
   return (
     <>
-      <article id={location.id} className="thumb">
-        <img className="thumb_cover" src={location.cover} alt={location.title} />
-        <h2 className="thumb_title">{location.title}</h2>
+      <article id={flat.id} className={style.thumb}>
+        <img className={style.thumb_cover} src={flat.cover} alt={flat.title} />
+        <h2 className={style.thumb_title}>{flat.title}</h2>
       </article>
     </>
   )
