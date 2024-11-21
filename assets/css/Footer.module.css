@@ -8,6 +8,8 @@
   height: 209px;
   background-color: #000000;
   z-index: 100;
+  padding-top: 66px;
+  padding-bottom: 58px;
 }
 .footer_logo_container {
   display: flex;
@@ -25,5 +27,6 @@
 @media (min-width: 768px) {
   .footer {
     gap: 30px;
+    padding-bottom: 29px;
   }
 }

@@ -27,11 +27,18 @@
 
 @media (min-width: 768px) {
   .thumb {
-    width: 340px;
-    height: 340px;
+    width: 200px;
+    height: 200px;
 
     &_title {
       font-size: $l;
     }
+  }
+}
+
+@media (min-width: 1280px) {
+  .thumb {
+    width: 340px;
+    height: 340px;
   }
 }

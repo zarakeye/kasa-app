@@ -28,7 +28,7 @@ const Home = (): JSX.Element => {
         </div>
       ) : (
         <>
-          <h1 className={style.sr_only}>Liste de locations</h1>
+          <h1 className={style.sr_only}>Accueil - Liste des appartements</h1>
           <div className={style.cards_container}>
             {flatsData.map((flat) => (
               <Link to={`/flat/${flat.id}`} key={flat.id}>

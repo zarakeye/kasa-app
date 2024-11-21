@@ -55,6 +55,7 @@ const Flat: React.FC = (): JSX.Element => {
         </div>
       ) : (
         <>
+          <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
             
           <div className={style.flat_info}>

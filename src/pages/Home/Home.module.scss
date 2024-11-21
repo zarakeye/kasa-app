@@ -6,10 +6,12 @@
   flex-direction: column;
   align-items: center;
   color: $complementary-text-color;
-  text-align: center;
+  text-align: left;
   height: 111px;
   overflow: clip;
   border-radius: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   &_img {
     &_container, &_filter {
@@ -44,6 +46,7 @@
     transform: translate(-50%, -50%);
     font-weight: $weight-bold;
     font-size: $xl;
+    width: calc(100% - 32px);
   }
 }
 
@@ -76,11 +79,12 @@
 @media (min-width: 768px) {
   .slogan {
     height: 223px;
+    text-align: center;
   }
 
   .cards_container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 200px);
     width: calc(100% - 100px);
     row-gap: 60px;
     column-gap: 50px;
@@ -91,5 +95,17 @@
     a {
       width: 340px;
     }
+  }
+}
+
+@media (min-width: 950px) {
+  .cards_container {
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .cards_container {
+    grid-template-columns: repeat(3, 340px);
   }
 }

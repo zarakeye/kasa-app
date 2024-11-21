@@ -63,4 +63,8 @@
     font-size: 18px;
     line-height: 26px;
   }
+  .dropdown_content ul, .dropdown_content p {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }

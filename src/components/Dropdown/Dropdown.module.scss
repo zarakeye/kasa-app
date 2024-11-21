@@ -77,6 +77,11 @@
     &_content {
       font-size: $l;
       line-height: 26px;
+
+      ul, p {
+        font-size: $l;
+        line-height: 26px;
+      }
     }
   }
 }
