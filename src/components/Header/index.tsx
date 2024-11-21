@@ -1,8 +1,15 @@
-import { NavLink } from 'react-router-dom'
+import { useLocation, NavLink } from 'react-router-dom'
 import logo from '../../assets/pictures/logo.svg'
 import style from './Header.module.scss'
+import { useEffect, useState } from 'react'
 
 const Header = (): JSX.Element => {
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState('/');
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
   return (
     <header className={style.header}>
       <div className={style.app_logo_container}>
@@ -10,8 +17,8 @@ const Header = (): JSX.Element => {
       </div>
       <nav>
         <ul>
-          <li><NavLink to="/">Accueil</NavLink></li>
-          <li><NavLink to="/about">À propos</NavLink></li>
+          <li><NavLink to="/" className={activeLink === '/' ? style.active : ''}>Accueil</NavLink></li>
+          <li><NavLink to="/about" className={activeLink === '/about' ? style.active : ''}>À propos</NavLink></li>
         </ul>
       </nav>
     </header>

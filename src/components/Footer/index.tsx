@@ -3,11 +3,11 @@ import logoWhite from '../../assets/pictures/logo_white.svg'
 
 const Footer = (): JSX.Element => {
   return (
-    <footer>
-      <div className={style.logo_footer_container}>
+    <footer className={style.footer}>
+      <div className={style.footer_logo_container}>
         <img src={logoWhite} alt="" />
       </div>
-      <p className={style.copyright}>© 2023 Kasa. All rights reserved</p>
+      <p className={style.footer_copyright}>© 2023 Kasa. All rights reserved</p>
     </footer>
   )
 }

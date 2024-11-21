@@ -34,7 +34,7 @@
 .dropdown_arrow {
   height: 10px;
 }
-.dropdown.open {
+.dropdown_arrow_open {
   animation: halfRotate 0.2s ease-in-out forwards;
 }
 .dropdown_content {

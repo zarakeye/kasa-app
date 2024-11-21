@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom"
 import starEmpty from '../../assets/pictures/star_empty.svg'
 import starFull from '../../assets/pictures/star_full.svg'
 import Dropdown from "../../components/Dropdown"
-import useLocationsData from "../../hooks/useFlatsData"
+import useFlatsData from "../../hooks/useFlatsData"
 import Spinner from "../../utils/Spinner"
 import style from './Flat.module.scss'
 import Carousel from "../../components/Carousel"
+import Error404 from "../Error404"
 
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
-  const { flatsData, isDataLoading, error } = useLocationsData();
+  const { flatsData, isDataLoading, error } = useFlatsData();
   // const [localPictures, setLocalPictures] = useState<string[]>([]);
 
   if (error) {
@@ -18,6 +19,10 @@ const Flat: React.FC = (): JSX.Element => {
   }
 
   const data = flatsData.find((flat) => flat.id === flatId);
+
+  if (!data) {
+    return <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
+  }
 
   const { title, pictures, description, host, rating, location, equipments, tags } = data || {};
 

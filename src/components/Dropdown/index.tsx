@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import style from './Dropdown.module.scss';
 import chevron from '../../assets/pictures/chevron.svg'
 
@@ -12,13 +12,20 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   const arrow = useRef<HTMLImageElement>(null);
 
   const handleClick = () => {
-    arrow.current?.classList.toggle('open');
     setIsOpen(isOpen => isOpen === title ? '' : title);
   }
 
+  useEffect(() => {
+    if (isOpen.length > 0) {
+      arrow.current?.classList.add(style.dropdown_arrow_open);
+    } else {
+      arrow.current?.classList.remove(style.dropdown_arrow_open);
+    }
+  }, [isOpen])
+
   return (
     <aside className={style.dropdown}>
-      <header className={style.dropdown_header} onClick={handleClick}>
+      <header className={style.dropdown_header} onClick={handleClick }>
         <h3 className={style.dropdown_title}>{title}</h3>
         <img ref={arrow} className={style.dropdown_arrow} src={chevron} alt="flèche" />
       </header>

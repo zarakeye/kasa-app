@@ -1,6 +1,6 @@
 @use '../../utils/styles/abstracts' as *;
 
-footer {
+.footer {
   position: sticky;
   display: flex;
   bottom: 0;
@@ -10,24 +10,27 @@ footer {
   height: 209px;
   background-color: $text-color;
   z-index: 100;
+
+
+  &_logo_container {
+    display: flex;
+    justify-content: center;
+    width: 33.33%;
+  }
+
+  &_copyright {
+    width: 33.33%;
+    text-align: center;
+    color: $complementary-text-color;
+    font-weight: $weight-medium;
+    font-size: $xs;
+  }
 } 
 
-.logo_footer_container {
-  display: flex;
-  justify-content: center;
-  width: 33.33%;
-}
 
-.copyright {
-  width: 33.33%;
-  text-align: center;
-  color: $complementary-text-color;
-  font-weight: $weight-medium;
-  font-size: $xs;
-}
 
 @media (min-width: 768px) {
-  footer {
+  .footer {
     gap: 30px;
   }
 }

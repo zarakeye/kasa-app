@@ -16,15 +16,17 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
       <Container >
-      <Header />
-        <Layout >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/flat/:flatId" element={<Flat />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </Layout>
+        <div className='appMainFlexbox'>
+          <Header />
+          <Layout >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/flat/:flatId" element={<Flat />} />
+              <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+            </Routes>
+          </Layout>
+        </div>
         <Footer />
       </Container>
     </Router>

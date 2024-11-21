@@ -29,7 +29,7 @@ const About = (): JSX.Element => {
 
   return (
     <>
-      <h1 className={style.sr0nly}>À propos</h1>
+      <h1 className={style.sr_only}>À propos</h1>
       <div className={style.about_image_container}>
         <img src={landscape} alt="paysage" className={style.about_image} />
         <div className={style.about_image_filter}></div>

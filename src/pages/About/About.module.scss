@@ -2,7 +2,7 @@
   &_image {
     &_container {
       position: relative;
-      width: 335px;
+      width: calc(100vw - 20px);
       height: 111px;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -19,6 +19,27 @@
       right: 0;;
       bottom: 0;
       background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: clip;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .about {
+    &_image {
+      &_container {
+        width: calc(100vw - 2 * 100px);
+      }
     }
   }
 }

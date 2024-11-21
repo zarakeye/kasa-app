@@ -39,11 +39,11 @@
   &_arrow {
     height: 10px;
     
+    &_open {
+      animation: halfRotate 0.2s ease-in-out forwards;
+    }
   }
   
-  &.open {
-    animation: halfRotate 0.2s ease-in-out forwards;
-  }
 
   &_content {
     color: $text-color;

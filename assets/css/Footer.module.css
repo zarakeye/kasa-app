@@ -1,4 +1,4 @@
-footer {
+.footer {
   position: sticky;
   display: flex;
   bottom: 0;
@@ -9,14 +9,12 @@ footer {
   background-color: #000000;
   z-index: 100;
 }
-
-.logo_footer_container {
+.footer_logo_container {
   display: flex;
   justify-content: center;
   width: 33.33%;
 }
-
-.copyright {
+.footer_copyright {
   width: 33.33%;
   text-align: center;
   color: #FFFFFF;
@@ -25,7 +23,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-  footer {
+  .footer {
     gap: 30px;
   }
 }
