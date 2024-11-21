@@ -40,6 +40,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    font-size: 10px;
     gap: 10px;
     margin-top: 10px
   }
@@ -61,6 +62,7 @@
   &_host {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     &_name {
       flex-direction: column;
@@ -94,9 +96,80 @@
   &_rating {
     display: flex;
     flex-direction: row;
+    column-gap: 2px;
   }
 
   &_rate {
     height: 13px;
+    &_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .flat {
+    &_title {
+      font-size: $xxl;
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &_location {
+      font-size: $l;
+    }
+
+    &_tags {
+      margin-top: 20px;
+    }
+
+    &_tag {
+      font-size: $m;
+    }
+
+    &_desc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 75px;
+    }
+
+    &_rating {
+      width: 196px;
+      justify-content: flex-end;
+      column-gap: 4px;
+    }
+
+    &_rate {
+      height: 24px;
+      &_container {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    &_host {
+      &_name {
+        font-size: $l;
+      }
+
+      &_portrait_wrapper {
+        width: 64px;
+        height: 64px;
+      }
+
+
+      &_eval {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+      }
+    }
   }
 }

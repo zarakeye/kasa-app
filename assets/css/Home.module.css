@@ -67,3 +67,23 @@
   display: flex;
   justify-content: center;
 }
+
+@media (min-width: 768px) {
+  .slogan {
+    height: 223px;
+  }
+  .cards_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: calc(100% - 100px);
+    row-gap: 60px;
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+    background-color: #F6F6F6;
+    padding: 55px;
+    border-radius: 25px;
+  }
+  .cards_container a {
+    width: 340px;
+  }
+}

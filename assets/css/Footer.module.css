@@ -23,3 +23,9 @@ footer {
   font-weight: 500;
   font-size: 12px;
 }
+
+@media (min-width: 768px) {
+  footer {
+    gap: 30px;
+  }
+}

@@ -31,15 +31,18 @@
   &_title {
     cursor: pointer;
     font-size: $s;
+    line-height: 17px;
     font-weight: $weight-bold;
     color: $complementary-text-color;
   }
 
   &_arrow {
     height: 10px;
-    &.open {
-      animation: halfRotate 0.2s ease-in-out forwards;
-    }
+    
+  }
+  
+  &.open {
+    animation: halfRotate 0.2s ease-in-out forwards;
   }
 
   &_content {
@@ -61,9 +64,19 @@
       font-weight: $weight-regular;
     }
   }
+  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+}
 
+@media (min-width: 768px) {
+  .dropdown {
+    &_title {
+      font-size: $l;
+      line-height: 34px;
+    }
 
-
-  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  
+    &_content {
+      font-size: $l;
+      line-height: 26px;
+    }
+  }
 }

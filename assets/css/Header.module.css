@@ -5,8 +5,7 @@
   background-color: white;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem 0 1rem;
-  margin-bottom: 27px;
+  padding: 1rem 1rem 1rem 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
@@ -32,4 +31,24 @@ ul a {
 }
 ul a.active {
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 45px 100px 45px 100px;
+  }
+  .app_logo {
+    width: 100%;
+  }
+  .app_logo_container {
+    width: 210px;
+  }
+  ul {
+    -moz-column-gap: 57px;
+         column-gap: 57px;
+    font-size: 24px;
+  }
+  ul a {
+    text-transform: initial;
+  }
 }

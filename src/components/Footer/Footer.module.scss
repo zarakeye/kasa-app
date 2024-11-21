@@ -25,3 +25,9 @@ footer {
   font-weight: $weight-medium;
   font-size: $xs;
 }
+
+@media (min-width: 768px) {
+  footer {
+    gap: 30px;
+  }
+}

@@ -27,13 +27,13 @@ const Flat: React.FC = (): JSX.Element => {
   for (let i = 0; i < 5; i++) {
     if (rating && i < parseInt(rating, 10)) {
       stars.push(
-        <div key={i}>
+        <div key={i} className={style.flat_rate_container}>
           <img key={i} src={starFull} alt="étoile pleine" className={style.flat_rate} />
         </div>
       )
     } else {
       stars.push(
-        <div key={i}>
+        <div key={i} className={style.flat_rate_container}>
           <img key={i} src={starEmpty} alt="étoile vide"  className={style.flat_rate} />
         </div>
       )
@@ -51,28 +51,30 @@ const Flat: React.FC = (): JSX.Element => {
       ) : (
         <>
           {pictures && <Carousel pictures={pictures} />}
-          
-          <div className={style.flat_resume}>
-            <h2 className={style.flat_title}>{title}</h2>
-            <p className={style.flat_location}>{location}</p>
-            <div className={style.flat_tags}>
-              {tags && tags.map((tag: string, index: number) => (
-                <span key={index} className="flat_tag">{tag}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className={style.flat_host_eval}>
-            <div className={style.flat_rating}>
-              {stars}
-            </div>
-            <div className={style.flat_host}>
-              <div className={style.flat_host_name}>
-                <p>{firstName}</p>
-                <p>{lastName}</p>
+            
+          <div className={style.flat_info}>
+            <div className={style.flat_resume}>
+              <h2 className={style.flat_title}>{title}</h2>
+              <p className={style.flat_location}>{location}</p>
+              <div className={style.flat_tags}>
+                {tags && tags.map((tag: string, index: number) => (
+                  <span key={index} className={style.flat_tag}>{tag}</span>
+                ))}
               </div>
-              <div className={style.flat_host_portrait_wrapper}>
-                <img src={host && host.picture} alt={host && host.name} className={style.flat_host_portrait}/>
+            </div>
+
+            <div className={style.flat_host_eval}>
+              <div className={style.flat_rating}>
+                {stars}
+              </div>
+              <div className={style.flat_host}>
+                <div className={style.flat_host_name}>
+                  <p>{firstName}</p>
+                  <p>{lastName}</p>
+                </div>
+                <div className={style.flat_host_portrait_wrapper}>
+                  <img src={host && host.picture} alt={host && host.name} className={style.flat_host_portrait}/>
+                </div>
               </div>
             </div>
           </div>

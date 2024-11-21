@@ -11,7 +11,7 @@ const Header = (): JSX.Element => {
       <nav>
         <ul>
           <li><NavLink to="/">Accueil</NavLink></li>
-          <li><NavLink to="/about">A propos</NavLink></li>
+          <li><NavLink to="/about">À propos</NavLink></li>
         </ul>
       </nav>
     </header>
