@@ -21,11 +21,7 @@ interface UseFlatDataReturn {
   flatsData: Flat[];
   isDataLoading: boolean;
   error: string | null;
-  refetch: () => Promise<void>; 
 }
-
-const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5173";
-const FLATS_ENDPOINT = "/datas/flats.json";
 
 // Custom hook for fetching location data
 const useLocationsData = (initialData: Flat[] = []): UseFlatDataReturn => {
@@ -38,7 +34,7 @@ const useLocationsData = (initialData: Flat[] = []): UseFlatDataReturn => {
     setError(null);
 
     try {
-      const response = await fetch(`${BASE_URL}${FLATS_ENDPOINT}`, { signal,
+      const response = await fetch(`/datas/flats.json`, { signal,
         headers: {
           "Accept": "application/json",
         }
@@ -82,9 +78,7 @@ const useLocationsData = (initialData: Flat[] = []): UseFlatDataReturn => {
     };
   }, []);
 
-  const refetch = () => fetchFlats();
-
-  return { flatsData, isDataLoading, error, refetch };
+  return { flatsData, isDataLoading, error };
 };
 
 export default useLocationsData;
