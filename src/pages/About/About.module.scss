@@ -37,9 +37,19 @@
 @media (min-width: 768px) {
   .about {
     &_image {
+      object-position: bottom;
+      border-radius: 25px;
       &_container {
         width: calc(100vw - 2 * 100px);
+        height: 223px;
+        border-radius: 25px;
+        margin-bottom: 38px;
       }
     }
+  }
+
+  .values_container {
+    padding-left: 120px;
+    padding-right: 120px;
   }
 }

@@ -5,7 +5,7 @@ import style from './About.module.scss'
 const About = (): JSX.Element => {
   const fiabilityContent: JSX.Element = (
     <p>
-      Les annonces postées suur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont verifiables par nos soins.
+      Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont verifiables par nos soins.
     </p>
   )
   
@@ -35,10 +35,12 @@ const About = (): JSX.Element => {
         <div className={style.about_image_filter}></div>
       </div>
 
-      <Dropdown title='Fiabilité' content={fiabilityContent} />
-      <Dropdown title='Respect' content={respectContent} />
-      <Dropdown title='Service' content={serviceContent} />
-      <Dropdown title='Sécurité' content={securityContent} />
+      <div className={style.values_container}>
+        <Dropdown title='Fiabilité' content={fiabilityContent} />
+        <Dropdown title='Respect' content={respectContent} />
+        <Dropdown title='Service' content={serviceContent} />
+        <Dropdown title='Sécurité' content={securityContent} />
+      </div>
     </>
   )
 }

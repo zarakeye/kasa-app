@@ -34,7 +34,19 @@
 }
 
 @media (min-width: 768px) {
+  .about_image {
+    -o-object-position: bottom;
+       object-position: bottom;
+    border-radius: 25px;
+  }
   .about_image_container {
     width: calc(100vw - 200px);
+    height: 223px;
+    border-radius: 25px;
+    margin-bottom: 38px;
+  }
+  .values_container {
+    padding-left: 120px;
+    padding-right: 120px;
   }
 }

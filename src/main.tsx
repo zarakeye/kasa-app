@@ -12,23 +12,35 @@ import Footer from './components/Footer'
 import Layout from './components/Layout'
 import Header from './components/Header'
 
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <>
+//       <Route path="/" element={<Home />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+//       <Route path="/about" element={<About />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+//       <Route path="/flat/:flatId" element={<Flat />} errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
+//     </>
+//   )
+// )
+
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
-      <Container >
-        <div className='appMainFlexbox'>
+    <Container >
+      <div className='appMainFlexbox'>
+        <Router>
           <Header />
           <Layout >
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/flat/:flatId" element={<Flat />} />
+              <Route path="/" element={<Home />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+              <Route path="/about" element={<About />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+              <Route path="/flat/:flatId" element={<Flat />} errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
               <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
             </Routes>
           </Layout>
-        </div>
-        <Footer />
-      </Container>
-    </Router>
-  </StrictMode>,
+        </Router>
+      </div>
+      <Footer />
+    </Container>
+  </StrictMode>
 )
