@@ -17,14 +17,14 @@ export interface Flat {
   tags: string[];
 }
 
-interface UseFlatDataReturn {
+export interface UseFlatDataReturn {
   flatsData: Flat[];
   isDataLoading: boolean;
   error: string | null;
 }
 
 // Custom hook for fetching location data
-const useLocationsData = (): UseFlatDataReturn => {
+const useFlatsData = (): UseFlatDataReturn => {
   const [flatsData, setFlatsData] = useState<Flat[]>([]);
   const [isDataLoading, setDataLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -81,4 +81,4 @@ const useLocationsData = (): UseFlatDataReturn => {
   return { flatsData, isDataLoading, error };
 };
 
-export default useLocationsData;
+export default useFlatsData;

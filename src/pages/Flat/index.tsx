@@ -1,51 +1,40 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 import starEmpty from '../../assets/pictures/star_empty.svg'
 import starFull from '../../assets/pictures/star_full.svg'
 import Dropdown from "../../components/Dropdown"
-import useFlatsData, { Flat as FlatData} from "../../hooks/useFlatsData"
 import Spinner from "../../utils/Spinner"
 import style from './Flat.module.scss'
 import Carousel from "../../components/Carousel"
 import Error404 from "../Error404"
+import { useFetchContext } from "../../hooks/useFetchContext"
+
 
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
-  const { flatsData, isDataLoading, error } = useFlatsData();
-  const [flatData, setFlatData] = useState<FlatData | null>(null);
-  const [flatDataLoading, setFlatDataLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const { flatsData } = useFetchContext();
+  const [flatLoading, setFlatLoading] = useState(true);
+  const [error, setError] = useState(false);
   
-  // const data = useMemo(() => {
-  //   return flatsData.find((flat) => flat.id === flatId);
-  // }, [flatsData, flatId]);
-
-  useEffect(() => {
-    const fetchFlatData = async () => {
-      setFlatDataLoading(true);
-      setIsError(false);
-
-      try {
-        const foundFlat = flatsData.find((flat) => flat.id === flatId);
-        const foundData: FlatData | null = foundFlat ? foundFlat : null;
-        setFlatData(foundData);
-      } catch (err) {
-        console.log(err);
-        setIsError(true);
-      } finally {
-        setFlatDataLoading(false);
-      }
-    };
-
-    fetchFlatData();
+  const foundFlat = useMemo(() => {
+    return flatsData.find((flat) => flat.id === flatId);
   }, [flatsData, flatId]);
 
-  if (error) {
-    return <div>Une erreur ${error} est survenue durant le chargement des données</div>
-  }
+  const isObjectEmpty = (obj: object): boolean => {
+    return Object.keys(obj).length === 0;
+  };
 
-  const { title, pictures, description, host, rating, location, equipments, tags } = flatData || {};
-  // const { title, pictures, description, host, rating, location, equipments, tags } = flatData || {};
+  useEffect(() => {
+    if (foundFlat && typeof foundFlat === 'object') {
+      setFlatLoading(false);
+      setError(false);
+    } else if (foundFlat && isObjectEmpty(foundFlat)) {
+      setFlatLoading(true);
+      setError(true);
+    }
+  }, [foundFlat])
+
+  const { title, pictures, description, host, rating, location, equipments, tags } = foundFlat || {};
 
   const parsedRating = rating && parseInt(rating, 10);
   const stars: JSX.Element[] = [];
@@ -69,15 +58,12 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {flatDataLoading && (
+      {flatLoading && (
         <div className={style.spinner_container}>
           <Spinner />
         </div>
       )}
-      {(!flatDataLoading && flatData === null) && (
-        <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
-      )}
-      {flatData !== null && !isError && !flatDataLoading && 
+      {foundFlat && typeof foundFlat === 'object' && ( 
         <>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
@@ -114,7 +100,11 @@ const Flat: React.FC = (): JSX.Element => {
             <Dropdown title="Équipements" content={<ul>{equipments && equipments.map((equipment: string, index: number) => <li key={index}>{equipment}</li>)}</ul>} />
           </div>
         </>
-      }
+      )}
+
+      {(error === true) && (
+        <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
+      )}
     </>
   )
 }
