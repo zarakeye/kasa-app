@@ -13,29 +13,31 @@ import Footer from "./components/Footer"
 
 const App: React.FC = () => {
   return (
-    <Container >
-      <div className='appMainFlexbox'>
-      <FlatProvider>
-        <Router>
-          <DataProvider>
-            <Header />
-            <Layout >
-              <Routes>
-                <Route path="/" element={<Home />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-                <Route path="/about" element={<About />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-                <Route 
-                  path="/flat/:flatId" 
-                  element={<Flat />} 
-                  errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
-                <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-              </Routes>
-            </Layout>
-          </DataProvider>
-        </Router>
-      </FlatProvider>
-      </div>
+    <>
+      <Container>
+        <div className='appMainFlexbox'>
+          <FlatProvider>
+            <Router>
+              <DataProvider>
+                <Header />
+                <Layout>
+                  <Routes>
+                    <Route path="/" element={<Home />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+                    <Route path="/about" element={<About />} errorElement={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+                    <Route
+                      path="/flat/:flatId"
+                      element={<Flat />}
+                      errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
+                    <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+                  </Routes>
+                </Layout>
+              </DataProvider>
+            </Router>
+          </FlatProvider>
+        </div>
+      </Container>
       <Footer />
-    </Container>
+    </>
   )
 }
 

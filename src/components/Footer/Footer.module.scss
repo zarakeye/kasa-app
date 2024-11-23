@@ -2,13 +2,11 @@
 
 .footer {
   display: flex;
-  bottom: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 209px;
   background-color: $text-color;
-  z-index: 100;
   padding-top: 66px;
   padding-bottom: 58px;
 
