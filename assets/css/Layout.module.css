@@ -20,7 +20,12 @@
 
 @media (min-width: 768px) {
   .layout {
-    padding: 30px 100px 30px 100px;
+    padding: 30px 50px;
+  }
+}
+@media (min-width: 950px) {
+  .layout {
+    padding: 30px 100px;
   }
 }
 @media (min-width: 1640px) {

@@ -40,10 +40,10 @@
 @media (min-width: 768px) and (orientation: landscape) {
   .carousel {
     height: 415px;
-    max-width: calc(100vw - 2 * 100px);
+    max-width: calc(100vw - 2 * 50px);
 
     &_image {
-      width: calc(100vw - 2 * 100px);
+      width: calc(100vw - 2 * 50px);
       object-fit: cover;
       border-radius: 10px;
     }
