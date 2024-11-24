@@ -1,5 +1,6 @@
 import landscape from '../../assets/pictures/landscape_2.png'
 import Dropdown from '../../components/Dropdown'
+import Layout from '../../components/Layout'
 import style from './About.module.scss'
 
 const About = (): JSX.Element => {
@@ -28,20 +29,22 @@ const About = (): JSX.Element => {
   )
 
   return (
-    <>
-      <h1 className={style.sr_only}>À propos</h1>
-      <div className={style.about_image_container}>
-        <img src={landscape} alt="paysage" className={style.about_image} />
-        <div className={style.about_image_filter}></div>
-      </div>
+    <Layout>
+      <main>
+        <h1 className={style.sr_only}>À propos</h1>
+        <div className={style.about_image_container}>
+          <img src={landscape} alt="paysage" className={style.about_image} />
+          <div className={style.about_image_filter}></div>
+        </div>
 
-      <div className={style.values_container}>
-        <Dropdown title='Fiabilité' content={fiabilityContent} />
-        <Dropdown title='Respect' content={respectContent} />
-        <Dropdown title='Service' content={serviceContent} />
-        <Dropdown title='Sécurité' content={securityContent} />
-      </div>
-    </>
+        <div className={style.values_container}>
+          <Dropdown title='Fiabilité' content={fiabilityContent} />
+          <Dropdown title='Respect' content={respectContent} />
+          <Dropdown title='Service' content={serviceContent} />
+          <Dropdown title='Sécurité' content={securityContent} />
+        </div>
+      </main>
+    </Layout>
   )
 }
 

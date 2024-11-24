@@ -1,13 +1,12 @@
 import React from "react";
-import useFlatsData, { Flat, UseFlatDataReturn } from "../../hooks/useFlatsData";
-import { FetchContext, FlatContext } from "../context";
-// import { Link } from "react-router-dom";
+import useFlatsData, { UseFlatDataReturn } from "../../hooks/useFlatsData";
+import { FetchContext } from "../context";
 
 interface DataProviderProps {
   children: React.ReactNode;
 }
 
-export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+export const DataContextProvider: React.FC<DataProviderProps> = ({ children }) => {
   const data: UseFlatDataReturn = useFlatsData();
 
   return (
@@ -17,13 +16,3 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   )
 };
 
-
-export const FlatProvider: React.FC<DataProviderProps> = ({ children }) => {
-  const [flat, setFlat] = React.useState<Flat | undefined>(undefined); // Define the state for the flat data
-
-  return (
-    <FlatContext.Provider value={{ flat, setFlat }}>
-        {children}
-    </FlatContext.Provider>
-  )
-};

@@ -3,15 +3,34 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 .dropdown {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-right: 12.5px;
   margin-bottom: 20px;
+  overflow: clip;
+  border-radius: 10px;
 }
 .dropdown_header {
+  position: sticky;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,6 +42,7 @@
   padding-left: 10px;
   padding-right: 12.5px;
   border-radius: 10px;
+  width: 100%;
 }
 .dropdown_title {
   cursor: pointer;
@@ -35,10 +55,29 @@
   height: 10px;
 }
 .dropdown_arrow_open {
-  animation: halfRotate 0.2s ease-in-out forwards;
+  animation: halfRotate 0.3s ease-in-out forwards;
+  animation-direction: alternate;
+}
+.dropdown_arrow_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dropdown_content {
   color: #000000;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 13px;
+  margin-top: 13px;
+  overflow: clip;
+}
+.dropdown_content.open {
+  position: absolute;
+  max-height: 1000px;
+  opacity: 1;
+  top: 0;
+  animation: slideDown 0.3s ease-in-out forwards;
 }
 .dropdown_content ul, .dropdown_content p {
   display: flex;
@@ -46,8 +85,10 @@
   list-style-type: none;
   font-size: 12px;
   padding-top: 13px;
+  margin-top: 13px;
   padding-left: 20px;
   padding-right: 20px;
+  width: calc(100% - 20px);
 }
 .dropdown_content li {
   font-size: 12px;
@@ -66,5 +107,18 @@
   .dropdown_content ul, .dropdown_content p {
     font-size: 18px;
     line-height: 26px;
+  }
+}
+@media (min-width: 1640px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropdown {
+    max-width: 1440px;
+  }
+  .dropdown_header {
+    width: calc(100% - 12.5px);
   }
 }

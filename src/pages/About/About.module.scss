@@ -2,7 +2,7 @@
   &_image {
     &_container {
       position: relative;
-      width: calc(100vw - 20px);
+      width: calc(100vw - 2 *20px);
       height: 111px;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -34,6 +34,22 @@
   border: 0;
 }
 
+.values_container {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  // width: calc(100% - 2 * 20px);
+  max-width: 1440px;
+
+  &:has(aside) {
+    aside {
+      width: calc(100% - 20px);
+      flex: 1;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .about {
     &_image {
@@ -49,7 +65,29 @@
   }
 
   .values_container {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 108px;
+    padding-right: 108px;
+    max-width: 1440px;
+
+  }
+}
+
+@media (min-width: 1640px) {
+  .about {
+    &_image_container {
+      max-width: 1440px;
+    }
+  }
+
+  .values_container {
+    padding: 0px;
+    width: 100%;
+
+    &:has(aside) {
+      aside {
+        width: calc(100% - 2 * 108px);
+        // max-width: 1440px;
+      }
+    }
   }
 }

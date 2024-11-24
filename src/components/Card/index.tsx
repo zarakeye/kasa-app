@@ -9,16 +9,19 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({flat}): JSX.Element => {
   return (
-    <Link 
-      to={`/flat/${flat.id}`}
-      key={flat.id}
-    >
-      <article id={flat.id} className={style.thumb}>
-        <img className={style.thumb_cover} src={flat.cover} alt={flat.title} />
-        <h2 className={style.thumb_title}>{flat.title}</h2>
-      </article>
-    </Link>
+    <>
+      <Link 
+        to={`/flat/${flat.id}`}
+        key={flat.id}
+      >
+        <article id={flat.id} className={style.thumb}>
+          <img className={style.thumb_cover} src={flat.cover} alt={flat.title} />
+          <h2 className={style.thumb_title}>{flat.title}</h2>
+        </article>
+      </Link>
+    </>
   )
 }
 
 export default Card
+

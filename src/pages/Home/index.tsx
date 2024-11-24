@@ -3,7 +3,7 @@ import Spinner from "../../utils/Spinner"
 import landscape from '../../assets/pictures/landscape.png'
 import style from './Home.module.scss'
 import { useFetchContext } from "../../hooks/useFetchContext"
-import { DataProvider, FlatProvider } from "../../utils/provider"
+import Layout from "../../components/Layout"
 
 const Home = (): JSX.Element => {
   const fetchedContext = useFetchContext();
@@ -17,15 +17,15 @@ const Home = (): JSX.Element => {
 
 
   return (
-    <DataProvider>
-      <FlatProvider>
+    <Layout>
+      <main>
         <div className={style.slogan}>
           <div className={style.slogan_img_container}>
             <img src={landscape} alt="slogan" className={style.slogan_img} />
+            <div className={style.slogan_img_filter}></div>
+            <p className={style.slogan_text}>Chez vous, partout et ailleurs</p>
           </div>
 
-          <div className={style.slogan_img_filter}></div>
-          <p className={style.slogan_text}>Chez vous, partout et ailleurs</p>
         </div>
         {isDataLoading ? (
           <div className={style.spinner_container}>
@@ -46,8 +46,8 @@ const Home = (): JSX.Element => {
             </div>
           </>
         )}
-      </FlatProvider>
-    </DataProvider>
+      </main>
+    </Layout>
   )
 }
 

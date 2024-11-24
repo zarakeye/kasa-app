@@ -8,7 +8,7 @@ import style from './Flat.module.scss'
 import Carousel from "../../components/Carousel"
 import Error404 from "../Error404"
 import { useFetchContext } from "../../hooks/useFetchContext"
-
+import Layout from "../../components/Layout"
 
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
@@ -25,7 +25,7 @@ const Flat: React.FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (foundFlat && typeof foundFlat === 'object') {
+    if (foundFlat && !isObjectEmpty(foundFlat)) {
       setFlatLoading(false);
       setError(false);
     } else if (foundFlat && isObjectEmpty(foundFlat)) {
@@ -63,47 +63,50 @@ const Flat: React.FC = (): JSX.Element => {
           <Spinner />
         </div>
       )}
-      {foundFlat && typeof foundFlat === 'object' && ( 
-        <>
-          <h1 className={style.sr_only}>Fiche de l'appartement</h1>
-          {pictures && <Carousel pictures={pictures} />}
-            
-          <div className={style.flat_info}>
-            <div className={style.flat_resume}>
-              <h2 className={style.flat_title}>{title}</h2>
-              <p className={style.flat_location}>{location}</p>
-              <div className={style.flat_tags}>
-                {tags && tags.map((tag: string, index: number) => (
-                  <span key={index} className={style.flat_tag}>{tag}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className={style.flat_host_eval}>
-              <div className={style.flat_rating}>
-                {stars}
-              </div>
-              <div className={style.flat_host}>
-                <div className={style.flat_host_name}>
-                  <p>{firstName}</p>
-                  <p>{lastName}</p>
-                </div>
-                <div className={style.flat_host_portrait_wrapper}>
-                  <img src={host && host.picture} alt={host && host.name} className={style.flat_host_portrait}/>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={style.flat_desc}>
-            <Dropdown title="Description" content={<p>{description}</p>} />
-            <Dropdown title="Équipements" content={<ul>{equipments && equipments.map((equipment: string, index: number) => <li key={index}>{equipment}</li>)}</ul>} />
-          </div>
-        </>
-      )}
 
       {(error === true) && (
         <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
+      )}
+
+      {foundFlat && typeof foundFlat === 'object' && ( 
+        <Layout>
+          <main>
+            <h1 className={style.sr_only}>Fiche de l'appartement</h1>
+            {pictures && <Carousel pictures={pictures} />}
+              
+            <div className={style.flat_info}>
+              <div className={style.flat_resume}>
+                <h2 className={style.flat_title}>{title}</h2>
+                <p className={style.flat_location}>{location}</p>
+                <div className={style.flat_tags}>
+                  {tags && tags.map((tag: string, index: number) => (
+                    <span key={index} className={style.flat_tag}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className={style.flat_host_eval}>
+                <div className={style.flat_rating}>
+                  {stars}
+                </div>
+                <div className={style.flat_host}>
+                  <div className={style.flat_host_name}>
+                    <p>{firstName}</p>
+                    <p>{lastName}</p>
+                  </div>
+                  <div className={style.flat_host_portrait_wrapper}>
+                    <img src={host && host.picture} alt={host && host.name} className={style.flat_host_portrait}/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={style.flat_desc}>
+              <Dropdown title="Description" content={<p>{description}</p>} />
+              <Dropdown title="Équipements" content={<ul>{equipments && equipments.map((equipment: string, index: number) => <li key={index}>{equipment}</li>)}</ul>} />
+            </div>
+          </main>
+        </Layout>
       )}
     </>
   )

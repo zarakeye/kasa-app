@@ -24,12 +24,17 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   }, [isOpen])
 
   return (
-    <aside className={style.dropdown}>
+    <aside className={style.dropdown} >
       <header className={style.dropdown_header} onClick={handleClick }>
         <h3 className={style.dropdown_title}>{title}</h3>
-        <img ref={arrow} className={style.dropdown_arrow} src={chevron} alt="flèche" />
+        <div className={style.dropdown_arrow_container}>
+          <img ref={arrow} className={style.dropdown_arrow} src={chevron} alt="flèche" />
+        </div>
       </header>
-      <div className={style.dropdown_content}>{(isOpen.length > 0) && content}</div>
+      <div className={`style.dropdown_content ${isOpen ? style.open : '' }`}
+      >
+        {(isOpen.length > 0) && content}
+      </div>
     </aside>
   )
 }
