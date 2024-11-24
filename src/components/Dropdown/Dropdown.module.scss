@@ -74,6 +74,7 @@
   }
 
   &_content {
+    flex-direction: column;
     color: $text-color;
     transition: all 0.3s ease-in-out;
     max-height: 0;
@@ -90,16 +91,20 @@
       animation: slideDown 0.3s ease-in-out forwards;
     }
 
-    ul, p {
-      display: flex;
-      flex-direction: column;
-      list-style-type: none;
-      font-size: $xs;
-      padding-top: 13px;
-      margin-top: 13px;
-      padding-left: 20px;
-      padding-right: 20px;
-      width: calc(100% - 20px);
+    &:has(ul, p) {
+      ul, p {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        list-style-type: none;
+        font-size: $xs;
+        padding-top: 13px;
+        margin-top: 13px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: calc(100% - 20px);
+      }
     }
 
     li {

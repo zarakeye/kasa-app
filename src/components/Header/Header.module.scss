@@ -5,6 +5,13 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1440px;
+
+  &:has(ul) {
+    ul {   
+      column-gap: 26px;
+      display: flex;
+    }
+  }
 }
 
 .app_logo{
@@ -13,12 +20,9 @@
     width: 145px;
   }
 }
-
 ul {
-  display: flex;
   font-weight: $weight-medium;
   font-size: $xs;
-  column-gap: 26px;
   a {
     color: $text-color;
     text-transform: uppercase;
@@ -38,8 +42,15 @@ ul {
     }
   }
 
+  .header {
+    &:has(ul) {
+      ul {   
+        column-gap: 57px;
+      }
+    }
+  }
+
   ul {
-    column-gap: 57px;
     font-size: $xl;
     a {
       text-transform: initial;
