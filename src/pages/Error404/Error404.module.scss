@@ -24,12 +24,15 @@
     line-height: 26px;
     font-weight: $weight-medium;
     color: $main-color;
+    width: 260px;
+    text-align: center;
   }
 
   &_linkToHome {
     font-size: $m;
     line-height: 20px;
     font-weight: $weight-medium;
+    color: $text-color;
   }
 }
   

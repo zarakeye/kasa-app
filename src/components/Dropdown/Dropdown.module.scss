@@ -21,14 +21,14 @@
 }
 
 .dropdown {
-  position: relative;
+  // position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-right: 12.5px;
+  // align-items: center;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  // padding-right: 12.5px;
   margin-bottom: 20px;
   overflow: clip;
   border-radius: 10px;
@@ -46,7 +46,7 @@
     padding-left: 10px;
     padding-right: 12.5px;
     border-radius: 10px;
-    width: 100%;
+    width: calc(100% - 22.5px);
   }
 
   &_title {
@@ -59,7 +59,6 @@
 
   &_arrow {
     height: 10px;
-    // right: -12.5px;
     &_open {
       animation: halfRotate 0.3s ease-in-out forwards;
       animation-direction: alternate;
@@ -74,14 +73,20 @@
   }
 
   &_content {
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
+    text-align: left;
     color: $text-color;
     transition: all 0.3s ease-in-out;
     max-height: 0;
     opacity: 0;
     padding-top: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 13px;
     overflow: clip;
+    align-items: flex-start;
+    width: calc(100% - 40px);
 
     &.open {
       position: absolute;
@@ -91,28 +96,11 @@
       animation: slideDown 0.3s ease-in-out forwards;
     }
 
-    &:has(ul, p) {
-      ul, p {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        list-style-type: none;
-        font-size: $xs;
-        padding-top: 13px;
-        margin-top: 13px;
-        padding-left: 20px;
-        padding-right: 20px;
-        width: calc(100% - 20px);
-      }
-    }
-
     li {
       font-size: $xs;
       font-weight: $weight-regular;
     }
   }
-  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
 }
 
 @media (min-width: 768px) {
@@ -125,11 +113,6 @@
     &_content {
       font-size: $l;
       line-height: 26px;
-
-      ul, p {
-        font-size: $l;
-        line-height: 26px;
-      }
     }
   }
 }
@@ -145,6 +128,5 @@
     &_header {
       width: calc(100% - 12.5px);
     }
-
   }
 }

@@ -9,6 +9,7 @@ import Flat from "./pages/Flat"
 import Error404 from "./pages/Error404"
 import Footer from "./components/Footer"
 import style from './App.module.scss'
+import Layout from "./components/Layout"
 
 const App: React.FC = () => {
   return (
@@ -18,16 +19,20 @@ const App: React.FC = () => {
             <Router>
               <DataContextProvider>
                 <Container>
-                    <Header />
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/about" element={<About />} />
-                      <Route
-                        path="/flat/:flatId"
-                        element={<Flat />}
-                        errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
-                      <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-                    </Routes>
+                    <Layout>
+                      <Header />
+                    </Layout>
+                    <Layout>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route
+                          path="/flat/:flatId"
+                          element={<Flat />}
+                          errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
+                        <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+                      </Routes>
+                    </Layout>
                 </Container>
                 <Footer />
               </DataContextProvider>

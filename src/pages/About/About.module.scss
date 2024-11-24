@@ -1,3 +1,5 @@
+@use '../../utils/styles/abstracts' as *;
+
 .about {
   &_image {
     &_container {
@@ -21,6 +23,12 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
   }
+
+  &_text {
+    font-size: $xs;
+    font-weight: $weight-regular;
+    padding: 13px 20px 20px 20px;
+  }
 }
 
 .sr_only {
@@ -34,13 +42,19 @@
   border: 0;
 }
 
-.values_container {
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-  // width: calc(100% - 2 * 20px);
-  max-width: 1440px;
+.aboutOurValues {
+  font-size: $xs;
+  font-weight: $weight-regular;
+  padding: 20px;
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    // width: calc(100% - 2 * 20px);
+    max-width: 1440px;
+  }
 
   &:has(aside) {
     aside {
@@ -48,6 +62,7 @@
       flex: 1;
     }
   }
+   
 }
 
 @media (min-width: 768px) {
@@ -62,13 +77,14 @@
         margin-bottom: 38px;
       }
     }
-  }
 
-  .values_container {
-    padding-left: 108px;
-    padding-right: 108px;
-    max-width: 1440px;
-
+    &_text {
+      &_container {
+        padding-left: 108px;
+        padding-right: 108px;
+        max-width: 1440px;
+      }
+    }
   }
 }
 
@@ -77,16 +93,11 @@
     &_image_container {
       max-width: 1440px;
     }
-  }
 
-  .values_container {
-    padding: 0px;
-    width: 100%;
-
-    &:has(aside) {
-      aside {
-        width: calc(100% - 2 * 108px);
-        // max-width: 1440px;
+    &_text {
+      &_container {
+        padding: 0px;
+        width: 100%;
       }
     }
   }

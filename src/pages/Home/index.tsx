@@ -3,7 +3,6 @@ import Spinner from "../../utils/Spinner"
 import landscape from '../../assets/pictures/landscape.png'
 import style from './Home.module.scss'
 import { useFetchContext } from "../../hooks/useFetchContext"
-import Layout from "../../components/Layout"
 
 const Home = (): JSX.Element => {
   const fetchedContext = useFetchContext();
@@ -17,37 +16,34 @@ const Home = (): JSX.Element => {
 
 
   return (
-    <Layout>
-      <main>
-        <div className={style.slogan}>
-          <div className={style.slogan_img_container}>
-            <img src={landscape} alt="slogan" className={style.slogan_img} />
-            <div className={style.slogan_img_filter}></div>
-            <p className={style.slogan_text}>Chez vous, partout et ailleurs</p>
-          </div>
-
+    <main>
+      <div className={style.slogan}>
+        <div className={style.slogan_img_container}>
+          <img src={landscape} alt="slogan" className={style.slogan_img} />
+          <div className={style.slogan_img_filter}></div>
+          <p className={style.slogan_text}>Chez vous, partout et ailleurs</p>
         </div>
-        {isDataLoading ? (
-          <div className={style.spinner_container}>
-            <Spinner />
+      </div>
+      {isDataLoading ? (
+        <div className={style.spinner_container}>
+          <Spinner />
+        </div>
+      ) : (
+        <>
+          <h1 className={style.sr_only}>Accueil - Liste des appartements</h1>
+          <div className={style.cards_container}>
+            {flatsData?.map((currentFlat) => {
+              return (
+                <Card
+                  key={currentFlat.id}
+                  flat={currentFlat}
+                />
+              )
+            })}
           </div>
-        ) : (
-          <>
-            <h1 className={style.sr_only}>Accueil - Liste des appartements</h1>
-            <div className={style.cards_container}>
-              {flatsData?.map((currentFlat) => {
-                return (
-                  <Card
-                    key={currentFlat.id}
-                    flat={currentFlat}
-                  />
-                )
-              })}
-            </div>
-          </>
-        )}
-      </main>
-    </Layout>
+        </>
+      )}
+    </main>
   )
 }
 

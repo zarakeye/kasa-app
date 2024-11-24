@@ -44,12 +44,17 @@ const Carousel: React.FC<CarouselProps> = ({pictures}): JSX.Element => {
   return (
     <div className={style.carousel}>
       <img className={style.carousel_image} src={pictures[activeIndex]} alt="image" />
-      <button type="button" className={style.carousel_button_previous} onClick={() => showPreviousImage()}>
-        <img className={style.carousel_button_previous_arrow} src={arrowLeft} alt="flèche bouton image précédente" />
-      </button>
-      <button type="button" className={style.carousel_button_next} onClick={() => showNextImage()}>
-        <img className={style.carousel_button_next_arrow} src={arrowRight} alt="flèche bouton image suivante" />
-      </button>
+      {pictures.length > 1 && (
+        <>
+          <button type="button" className={style.carousel_button_previous} onClick={() => showPreviousImage()}>
+            <img className={style.carousel_button_previous_arrow} src={arrowLeft} alt="flèche bouton image précédente" />
+          </button>
+          <button type="button" className={style.carousel_button_next} onClick={() => showNextImage()}>
+            <img className={style.carousel_button_next_arrow} src={arrowRight} alt="flèche bouton image suivante" />
+          </button>
+        </>
+      )}
+      
     </div>
   )
 }

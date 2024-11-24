@@ -1,6 +1,7 @@
 @use '../../utils/styles/abstracts' as *;
 
 .header {
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +18,7 @@
 .app_logo{
   width: 100%;
   &_container {
-    width: 145px;
+    width: 90px;
   }
 }
 ul {
@@ -30,6 +31,12 @@ ul {
     &.active {
       text-decoration: underline;
     }
+  }
+}
+
+@media (min-width: 375px) {
+  .app_logo {
+    width: 145px;
   }
 }
 

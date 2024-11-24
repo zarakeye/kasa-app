@@ -136,6 +136,12 @@
     width: 100%;
     max-width: 1440px;
   }
+
+  &_description, &_equipments {
+    font-size: $xs;
+    font-weight: $weight-regular;
+    padding: 13px 20px 20px 20px;
+  }
 }
 
 @media (min-width: 768px) {

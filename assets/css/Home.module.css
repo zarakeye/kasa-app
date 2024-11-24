@@ -1,8 +1,4 @@
 .slogan {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #FFFFFF;
   text-align: left;
   width: 100%;
@@ -108,10 +104,5 @@
 @media (min-width: 1280px) {
   .cards_container {
     grid-template-columns: repeat(3, 340px);
-  }
-}
-@media (min-width: 1440px) {
-  .slogan {
-    width: 100%;
   }
 }

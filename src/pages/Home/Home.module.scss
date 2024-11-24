@@ -1,10 +1,6 @@
 @use '../../utils/styles/abstracts' as *;
 
 .slogan {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: $complementary-text-color;
   text-align: left;
   width: 100%;
@@ -123,8 +119,8 @@
   }
 }
 
-@media (min-width: 1440px) {
-  .slogan {
-    width: 100%;
-  }
-}
+// @media (min-width: 1440px) {
+//   .slogan {
+//     width: 100%;
+//   }
+// }

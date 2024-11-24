@@ -7,7 +7,7 @@ const Footer = (): JSX.Element => {
       <div className={style.footer_logo_container}>
         <img src={logoWhite} alt="" />
       </div>
-      <p className={style.footer_copyright}>© 2023 Kasa. All rights reserved</p>
+      <p className={style.footer_copyright}>© 2020 Kasa. All rights reserved</p>
     </footer>
   )
 }
