@@ -11,17 +11,14 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const arrow = useRef<HTMLImageElement>(null);
   const contentWrapperRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen && contentWrapperRef && contentWrapperRef.current && contentRef && contentRef.current) {
+    if (isOpen && contentWrapperRef && contentWrapperRef.current) {
       arrow.current?.classList.add(style.dropdown_arrow_open);
-      // contentWrapperRef.current.style.height = `${contentWrapperRef.current?.scrollHeight}px`;
-      // contentRef.current.style.height = `${contentRef.current?.scrollHeight}px`;
-    } else if (contentWrapperRef && contentWrapperRef.current && contentRef && contentRef.current) {
+      contentWrapperRef.current.style.height = `${contentWrapperRef.current?.scrollHeight}px`;
+    } else if (contentWrapperRef && contentWrapperRef.current) {
       arrow.current?.classList.remove(style.dropdown_arrow_open);
-    //   contentWrapperRef.current.style.height = '0';
-    //   contentRef.current.style.height = '0';
+      contentWrapperRef.current.style.height = '0';
     }
   }, [isOpen])
 
@@ -35,12 +32,12 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
       </header>
       {/* {isOpen &&  */}
         <div ref={contentWrapperRef} className={isOpen ? `${style.dropdown_content_wrapper} ${style.open}` : `${style.dropdown_content_wrapper} ${style.close}`}>
-          <div ref={contentRef} className={isOpen ? `${style.dropdown_content} ${style.open}` : `${style.dropdown_content} ${style.close}`}>
+          <div className={isOpen ? `${style.dropdown_content} ${style.open}` : `${style.dropdown_content} ${style.close}`}>
             {Array.isArray(content)
-              ? <ul className={isOpen ? `${style.dropdown_content_list} ${style.open}` : `${style.dropdown_content_list} ${style.close}`} >
+              ? <ul className={style.dropdown_content_list}>
                   {content.map((item, index) => <li key={index} className={style.dropdown_content_item}>{item}</li>)}
                 </ul>
-              : <p className={isOpen ? `${style.dropdown_content_text} ${style.open}` : `${style.dropdown_content_text} ${style.close}`}>{content}</p>
+              : <p className={style.dropdown_content_text}>{content}</p>
             }
           </div>
         </div>
