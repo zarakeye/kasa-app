@@ -1,22 +1,22 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import starEmpty from '../../assets/pictures/star_empty.svg'
 import starFull from '../../assets/pictures/star_full.svg'
 import Dropdown from "../../components/Dropdown"
-import Spinner from "../../utils/Spinner"
 import style from './Flat.module.scss'
 import Carousel from "../../components/Carousel"
 import Error404 from "../Error404"
 import { useFetchContext } from "../../hooks/useFetchContext"
+import { Flat as FlatType } from "../../hooks/useFlatsData"
 
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
   const { flatsData } = useFetchContext();
-  const [flatLoading, setFlatLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [foundFlat, setFoundFlat] = useState<FlatType | undefined>({});
   
-  const foundFlat = useMemo(() => {
-    return flatsData.find((flat) => flat.id === flatId);
+  useEffect(() => {
+    setFoundFlat(flatsData.find((flat) => flat.id === flatId));
   }, [flatsData, flatId]);
 
   const isObjectEmpty = (obj: object): boolean => {
@@ -25,10 +25,8 @@ const Flat: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (foundFlat && !isObjectEmpty(foundFlat)) {
-      setFlatLoading(false);
       setError(false);
     } else if (foundFlat && isObjectEmpty(foundFlat)) {
-      setFlatLoading(true);
       setError(true);
     }
   }, [foundFlat])
@@ -57,12 +55,6 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {flatLoading && (
-        <div className={style.spinner_container}>
-          <Spinner />
-        </div>
-      )}
-
       {(error === true) && (
         <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
       )}
@@ -100,8 +92,8 @@ const Flat: React.FC = (): JSX.Element => {
           </div>
 
           <div className={style.flat_desc}>
-            <Dropdown title="Description" content={<p className={style.flat_description}>{description}</p>} />
-            <Dropdown title="Équipements" content={<ul className={style.flat_equipments}>{equipments && equipments.map((equipment: string, index: number) => <li key={index}>{equipment}</li>)}</ul>} />
+            <Dropdown title="Description" content={description ?? ''} />
+            <Dropdown title="Équipements" content={equipments ?? []} />
           </div>
         </main>
       )}

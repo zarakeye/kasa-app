@@ -38,6 +38,13 @@
 
 @media (min-width: 1280px) {
   .thumb {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 1340px) {
+  .thumb {
     width: 340px;
     height: 340px;
   }

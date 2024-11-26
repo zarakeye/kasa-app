@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 
 // Define the Location type within the hook file
 export interface Flat {
-  id: string;
-  title: string;
-  cover: string;
-  pictures: string[];
-  description: string;
-  host: {
+  id?: string;
+  title?: string;
+  cover?: string;
+  pictures?: string[];
+  description?: string;
+  host?: {
     name: string;
     picture: string;
   };
-  rating: string;
-  location: string;
-  equipments: string[];
-  tags: string[];
+  rating?: string;
+  location?: string;
+  equipments?: string[];
+  tags?: string[];
 }
 
 export interface UseFlatDataReturn {
@@ -29,12 +29,12 @@ const useFlatsData = (): UseFlatDataReturn => {
   const [isDataLoading, setDataLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchFlats = async (signal?: AbortSignal) => {
+  const fetchFlats = async () => {
     setDataLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`/datas/flats.json`, { signal,
+      const response = await fetch(`/datas/flats.json`, {
         headers: {
           "Accept": "application/json",
         }
@@ -70,12 +70,7 @@ const useFlatsData = (): UseFlatDataReturn => {
   };
 
   useEffect(() => {
-    const controller = new AbortController();
-    fetchFlats(controller.signal);
-
-    return () => {
-      controller.abort();
-    };
+    fetchFlats();
   }, []);
 
   return { flatsData, isDataLoading, error };

@@ -1,31 +1,17 @@
+import React from 'react'
 import landscape from '../../assets/pictures/landscape_2.png'
 import Dropdown from '../../components/Dropdown'
 import style from './About.module.scss'
 
 const About = (): JSX.Element => {
-  const fiabilityContent: JSX.Element = (
-    <p className={style.about_text}>
-      Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont verifiables par nos soins.
-    </p>
-  )
+  const fiabilityContent: string = 'Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont verifiables par nos soins.'
   
-  const respectContent: JSX.Element = (
-    <p className={style.about_text}>
-      La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entrainera une exclusion de notre plateforme.
-    </p>
-  )
+  
+  const respectContent: string = 'La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entrainera une exclusion de notre plateforme.'
 
-  const serviceContent: JSX.Element = (
-    <p className={style.about_text}>
-      La qualité du service est au coeur de notre engagement chez Kasa. Nous veillons à ce que chaque interaction, que ce soit avec nos hôtes ou nos locataires, soit empreinte de respect et de bienveillance.
-    </p>
-  )
+  const serviceContent: string = 'La qualité du service est au coeur de notre engagement chez Kasa. Nous veillons à ce que chaque interaction, que ce soit avec nos hôtes ou nos locataires, soit empreinte de respect et de bienveillance.'
 
-  const securityContent: JSX.Element = (
-    <p className={style.about_text}>
-      La securité est la priorité de Kasa. Aussi bien pour nos hôtes que pour nos équipes, chaque logement correspond aux critères de securité établis par nos services. En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes.
-    </p>
-  )
+  const securityContent: string = "La securité est la priorité de Kasa. Aussi bien pour nos hôtes que pour nos équipes, chaque logement correspond aux critères de securité établis par nos services. En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes."
 
   return (
     <main>
@@ -36,10 +22,11 @@ const About = (): JSX.Element => {
       </div>
 
       <div className={style.about_text_container}>
-        <Dropdown title='Fiabilité' content={fiabilityContent} />
-        <Dropdown title='Respect' content={respectContent} />
-        <Dropdown title='Service' content={serviceContent} />
-        <Dropdown title='Sécurité' content={securityContent} />
+
+        <Dropdown title='Fiabilité' content={fiabilityContent ?? ''} />
+        <Dropdown title='Respect' content={respectContent ?? ''} />
+        <Dropdown title='Service' content={serviceContent ?? ''} />
+        <Dropdown title='Sécurité' content={securityContent ?? ''} />
       </div>
     </main>
   )

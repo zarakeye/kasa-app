@@ -1,5 +1,35 @@
 @use '../../utils/styles/abstracts' as *;
 
+
+@keyframes slide_down {
+  // 0% {
+  //   top: -75%;
+  // }
+
+  // 50% {
+  //   top: -32.5%;
+  // }
+
+  // 100% {
+  //   top: 0;
+  // }
+  from {
+    top: -75%;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes slide_up {
+  from {
+    top: 0;
+  }
+  to {
+    top: -75%;
+  }
+}
+
 .sr_only {
   position: absolute;
   width: 1px;
@@ -59,12 +89,7 @@
   &_tags {
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
     justify-content: flex-start;
-    // align-items: stretch;
-
-
-    // font-size: 10px;
     gap: 10px;
     margin-top: 10px;
     width: 100%;
@@ -82,21 +107,6 @@
     text-align: center;
     vertical-align: middle;
   }
-
-  // &_tag {
-  //   justify-content: center;
-  //   align-items: center;
-  //   max-width: 84px;
-  //   height: 18px;
-  //   font-size: 10px;
-  //   font-weight: $weight-bold;
-  //   color: $complementary-text-color;
-  //   background-color: $main-color;
-  //   border-radius: 5px;
-  //   padding: 3px 15px;
-  //   margin-right: 10px;
-  //   white-space: nowrap;
-  // }
 
   &_host {
     display: flex;
@@ -154,16 +164,30 @@
     max-width: 1440px;
   }
 
-  &_description, &_equipments {
-    font-size: $xs;
-    font-weight: $weight-regular;
-    padding: 13px 20px 20px 20px;
-  }
+  // &_text {
+  //   position: absolute;
+  //   font-size: $xs;
+  //   font-weight: $weight-regular;
+  //   // height: 100%;
+  //   // top: -100%;
+  //   animation: slide_down 1s ease-in-out forwards;
+  //   padding-top: 13px;
+  //   padding-left: 20px;
+  //   padding-right: 20px;
+  //   padding-bottom:10px;
+  // }
 }
 
 @media (min-width: 375px) {
-  .flat_tags {
-    flex-direction: row;
+  .flat {
+    &_title {
+      line-height: 52px;
+    }
+
+    &_tags {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
   }
 }
 
@@ -185,7 +209,7 @@
 
     &_tags {
       margin-top: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 0px;
     }
 
     &_tag {
@@ -225,6 +249,7 @@
       &_eval {
         flex-direction: column-reverse;
         align-items: flex-end;
+        margin-bottom: 0;
       }
     }
   }

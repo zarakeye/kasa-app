@@ -1,16 +1,25 @@
 @use '../../utils/styles/abstracts' as *;
 
 .header {
-  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1440px;
 
-  &:has(ul) {
-    ul {   
-      column-gap: 26px;
-      display: flex;
+
+  &_links {
+    display: flex;
+    font-weight: $weight-medium;
+    font-size: $xs;
+    column-gap: 26px;
+
+    a {
+      color: $text-color;
+      text-transform: uppercase;
+      text-decoration: none;
+      &.active {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -19,18 +28,6 @@
   width: 100%;
   &_container {
     width: 90px;
-  }
-}
-ul {
-  font-weight: $weight-medium;
-  font-size: $xs;
-  a {
-    color: $text-color;
-    text-transform: uppercase;
-    text-decoration: none;
-    &.active {
-      text-decoration: underline;
-    }
   }
 }
 
@@ -55,12 +52,12 @@ ul {
         column-gap: 57px;
       }
     }
-  }
 
-  ul {
-    font-size: $xl;
-    a {
-      text-transform: initial;
+    ul {
+      a {
+        font-size: $xl;
+        text-transform: initial;
+      }
     }
   }
 }

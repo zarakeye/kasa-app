@@ -1,14 +1,23 @@
 .header {
-  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1440px;
 }
-.header:has(ul) ul {
+.header_links {
+  display: flex;
+  font-weight: 500;
+  font-size: 12px;
   -moz-column-gap: 26px;
        column-gap: 26px;
-  display: flex;
+}
+.header_links a {
+  color: #000000;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.header_links a.active {
+  text-decoration: underline;
 }
 
 .app_logo {
@@ -16,19 +25,6 @@
 }
 .app_logo_container {
   width: 90px;
-}
-
-ul {
-  font-weight: 500;
-  font-size: 12px;
-}
-ul a {
-  color: #000000;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-ul a.active {
-  text-decoration: underline;
 }
 
 @media (min-width: 375px) {
@@ -47,10 +43,8 @@ ul a.active {
     -moz-column-gap: 57px;
          column-gap: 57px;
   }
-  ul {
+  .header ul a {
     font-size: 24px;
-  }
-  ul a {
     text-transform: initial;
   }
 }

@@ -1,28 +1,27 @@
-@keyframes halfRotate {
+@keyframes slide {
   from {
-    transform: rotate(0deg);
+    top: -75%;
   }
   to {
-    transform: rotate(-180deg);
+    top: 0;
   }
 }
-@keyframes slideDown {
+@keyframes toggleHeight {
   from {
-    transform: translateY(-100%);
-    opacity: 0;
+    height: 0;
   }
   to {
-    transform: translateY(0);
-    opacity: 1;
+    height: auto;
   }
 }
 .dropdown {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  overflow: clip;
+  justify-content: flex-start;
+  margin-top: 20px;
   border-radius: 10px;
+  height: calc(100% + 20px);
+  transition: 0.3s ease-in-out;
 }
 .dropdown_header {
   position: sticky;
@@ -48,10 +47,12 @@
 }
 .dropdown_arrow {
   height: 10px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
 }
 .dropdown_arrow_open {
-  animation: halfRotate 0.3s ease-in-out forwards;
-  animation-direction: alternate;
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease-in-out;
 }
 .dropdown_arrow_container {
   display: flex;
@@ -59,25 +60,40 @@
   align-items: center;
 }
 .dropdown_content {
+  position: relative;
+  top: -75%;
+  transition: top ease-in-out 0.3s forwards;
+}
+.dropdown_content .open {
+  top: O;
+}
+.dropdown_content .close {
+  animation: slide reverse 0.3s ease-in-out forwards;
+}
+.dropdown_content_text, .dropdown_content_list {
+  position: absolute;
+  top: -75%;
+  width: 100%;
+}
+.dropdown_content_wrapper {
+  position: relative;
   text-align: left;
   color: #000000;
-  transition: all 0.3s ease-in-out;
-  max-height: 0;
-  opacity: 0;
-  padding-top: 13px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 13px;
   overflow: clip;
   align-items: flex-start;
   width: calc(100% - 40px);
+  height: 0;
+  overflow: clip;
+  will-change: height;
 }
-.dropdown_content.open {
-  position: absolute;
-  max-height: 1000px;
-  opacity: 1;
-  top: 0;
-  animation: slideDown 0.3s ease-in-out forwards;
+.dropdown_content_wrapper .open {
+  height: auto;
+  animation: toggleHeight 0.4s ease-in-out forwards;
+}
+.dropdown_content_wrapper .close {
+  height: 0;
+  overflow: clip;
+  animation: toggleHeight reverse 0.4s ease-in-out forwards;
 }
 .dropdown_content li {
   font-size: 12px;
@@ -92,6 +108,11 @@
   .dropdown_content {
     font-size: 18px;
     line-height: 26px;
+  }
+}
+@media (min-width: 1440px) {
+  .dropdown_title {
+    font-size: 24px;
   }
 }
 @media (min-width: 1640px) {

@@ -18,7 +18,7 @@ const Header = (): JSX.Element => {
         </Link>
       </div>
       <nav>
-        <ul>
+        <ul className={style.header_links}>
           <li><NavLink to="/" className={activeLink === '/' ? style.active : ''}>Accueil</NavLink></li>
           <li><NavLink to="/about" className={activeLink === '/about' ? style.active : ''}>À propos</NavLink></li>
         </ul>
