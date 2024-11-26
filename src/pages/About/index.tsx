@@ -1,4 +1,3 @@
-import React from 'react'
 import landscape from '../../assets/pictures/landscape_2.png'
 import Dropdown from '../../components/Dropdown'
 import style from './About.module.scss'

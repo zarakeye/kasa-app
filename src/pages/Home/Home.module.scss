@@ -131,6 +131,7 @@
   // .slogan {
   //   width: 100%;
   // }
+  
 
   .cards_container {
     grid-template-columns: repeat(3, 340px);
@@ -140,6 +141,8 @@
 @media (min-width: 1440px) {
   .slogan {
     max-width: 1440px;
+    width: 100%;
+
   }
   .cards_container {
     max-width: 1440px;

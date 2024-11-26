@@ -6,7 +6,8 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
   return (
-    <div className={style.layout}>{children}
+    <div className={style.layout}>
+      {children}
     </div>
   )
 }

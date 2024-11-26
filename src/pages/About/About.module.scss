@@ -49,13 +49,6 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
   }
-
-  // &_text {
-  //   position: absolute;
-  //   font-size: $xs;
-  //   font-weight: $weight-regular;
-  //   height: 100%;
-  // }
 }
 
 .sr_only {
@@ -91,6 +84,12 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .about {
+    max-width: 1440;
+  }
+}
+
 @media (min-width: 1640px) {
   .about {
     &_image_container {
@@ -99,10 +98,11 @@
 
     &_text {
       &_container {
-        padding: 0;
+        padding-left: 108.5px;
+        padding-right: 108.5px;
         margin-left: 232.5px;
         margin-right: 232.5px;
-        width: calc(100% - 2 * 232.5px);
+        width: 1175px;
       }
     }
   }

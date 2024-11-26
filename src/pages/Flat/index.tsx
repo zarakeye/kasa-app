@@ -8,14 +8,17 @@ import Carousel from "../../components/Carousel"
 import Error404 from "../Error404"
 import { useFetchContext } from "../../hooks/useFetchContext"
 import { Flat as FlatType } from "../../hooks/useFlatsData"
+import Spinner from "../../utils/Spinner"
 
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
   const { flatsData } = useFetchContext();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState(false);
-  const [foundFlat, setFoundFlat] = useState<FlatType | undefined>({});
+  const [foundFlat, setFoundFlat] = useState<FlatType | undefined >(undefined);
   
   useEffect(() => {
+    setIsLoading(true);
     setFoundFlat(flatsData.find((flat) => flat.id === flatId));
   }, [flatsData, flatId]);
 
@@ -25,8 +28,10 @@ const Flat: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (foundFlat && !isObjectEmpty(foundFlat)) {
+      setIsLoading(false);
       setError(false);
     } else if (foundFlat && isObjectEmpty(foundFlat)) {
+      setIsLoading(false);
       setError(true);
     }
   }, [foundFlat])
@@ -55,7 +60,13 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {(error === true) && (
+      {( /*typeof foundFlat === 'object' && !isObjectEmpty(foundFlat) && */ foundFlat === undefined && isLoading === true) && (
+        <div className={style.spinner_container}>
+          <Spinner />
+        </div>
+      )}
+
+      {( typeof foundFlat === 'object' && isLoading === false && error === true) && (
         <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
       )}
 

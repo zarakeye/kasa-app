@@ -37,10 +37,10 @@
   }
 }
 
-@media (min-width: 768px) and (orientation: landscape) {
+@media (min-width: 768px)/* and (orientation: landscape)*/ {
   .carousel {
     height: 415px;
-    max-width: calc(100vw - 2 * 50px);
+    max-width: 100%;
 
     &_image {
       width: calc(100vw - 2 * 50px);
@@ -58,6 +58,16 @@
           height: 80px;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .carousel {
+    max-width: 1440px;
+
+    &_image {
+      width: calc(100vw - 2 * 100px);
     }
   }
 }

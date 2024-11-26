@@ -118,6 +118,7 @@
 @media (min-width: 1440px) {
   .slogan {
     max-width: 1440px;
+    width: 100%;
   }
   .cards_container {
     max-width: 1440px;

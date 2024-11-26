@@ -32,10 +32,10 @@
   right: 0px;
 }
 
-@media (min-width: 768px) and (orientation: landscape) {
+@media (min-width: 768px) {
   .carousel {
     height: 415px;
-    max-width: calc(100vw - 100px);
+    max-width: 100%;
   }
   .carousel_image {
     width: calc(100vw - 100px);
@@ -50,6 +50,14 @@
   .carousel_button_previous_arrow, .carousel_button_next_arrow {
     width: 80px;
     height: 80px;
+  }
+}
+@media (min-width: 1440px) {
+  .carousel {
+    max-width: 1440px;
+  }
+  .carousel_image {
+    width: calc(100vw - 200px);
   }
 }
 @media (min-width: 1640px) {
