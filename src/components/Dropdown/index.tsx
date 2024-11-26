@@ -11,16 +11,29 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const arrow = useRef<HTMLImageElement>(null);
   const contentWrapperRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen && contentWrapperRef && contentWrapperRef.current) {
+    if (isOpen) {
       arrow.current?.classList.add(style.dropdown_arrow_open);
-      contentWrapperRef.current.style.height = `${contentWrapperRef.current?.scrollHeight}px`;
-    } else if (contentWrapperRef && contentWrapperRef.current) {
+    } else {
       arrow.current?.classList.remove(style.dropdown_arrow_open);
-      contentWrapperRef.current.style.height = '0';
     }
   }, [isOpen])
+
+  const renderContent = () => {
+    return Array.isArray(content) ? (
+      <ul className={style.dropdown_content_list}>
+        {content.map((item, index) => (
+          <li key={index} className={style.dropdown_content_item}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className={style.dropdown_content_text}>{content}</p>
+    )
+  }
 
   return (
     <aside className={style.dropdown} >
@@ -30,18 +43,19 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
           <img ref={arrow} className={style.dropdown_arrow} src={chevron} alt="flèche" />
         </div>
       </header>
-      {/* {isOpen &&  */}
-        <div ref={contentWrapperRef} className={isOpen ? `${style.dropdown_content_wrapper} ${style.open}` : `${style.dropdown_content_wrapper} ${style.close}`}>
-          <div className={isOpen ? `${style.dropdown_content} ${style.open}` : `${style.dropdown_content} ${style.close}`}>
-            {Array.isArray(content)
-              ? <ul className={style.dropdown_content_list}>
-                  {content.map((item, index) => <li key={index} className={style.dropdown_content_item}>{item}</li>)}
-                </ul>
-              : <p className={style.dropdown_content_text}>{content}</p>
-            }
+      {isOpen && (
+        <div
+          ref={contentWrapperRef}
+          className={ `${style.dropdown_content_wrapper} ${isOpen ? style.open : style.close}`}
+        >
+          <div
+            ref={contentRef}
+            className={style.dropdown_content}
+          >
+            {renderContent()}
           </div>
         </div>
-      {/* } */}
+      )}
     </aside>
   )
 }

@@ -1,17 +1,9 @@
-@keyframes slide {
+@keyframes halfRotate {
   from {
-    top: -75%;
+    transform: rotate(0deg);
   }
   to {
-    top: 0;
-  }
-}
-@keyframes toggleHeight {
-  from {
-    height: 0;
-  }
-  to {
-    height: auto;
+    transform: rotate(-180deg);
   }
 }
 .dropdown {
@@ -47,12 +39,9 @@
 }
 .dropdown_arrow {
   height: 10px;
-  transform: rotate(0deg);
-  transition: transform 0.3s ease-in-out;
 }
 .dropdown_arrow_open {
-  transform: rotate(-180deg);
-  transition: transform 0.3s ease-in-out;
+  animation: halfRotate 0.3s ease-in-out forwards;
 }
 .dropdown_arrow_container {
   display: flex;
@@ -60,23 +49,19 @@
   align-items: center;
 }
 .dropdown_content {
-  height: 100%;
+  height: auto;
 }
 .dropdown_content_text, .dropdown_content_list {
   width: 100%;
+  font-size: 12px;
   padding: 13px 20px 19px 20px;
 }
 .dropdown_content_wrapper {
+  position: relative;
   text-align: left;
   color: #000000;
-  overflow: clip;
   align-items: flex-start;
   width: calc(100% - 40px);
-  height: 0;
-}
-.dropdown_content li {
-  font-size: 12px;
-  font-weight: 400;
 }
 
 @media (min-width: 768px) {
@@ -87,6 +72,9 @@
   .dropdown_content {
     font-size: 18px;
     line-height: 26px;
+  }
+  .dropdown_content_text, .dropdown_content_list {
+    font-size: 16px;
   }
 }
 @media (min-width: 1440px) {

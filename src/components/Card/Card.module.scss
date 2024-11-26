@@ -16,11 +16,10 @@
 
   &_title {
     position: absolute;
-    font-size: $xs;
+    font-size: $l;
     bottom: 15px;
     left: 20px;
     font-weight: $weight-bold;
-    margin: 0 20px 20px 20px;
     color: $complementary-text-color;
   }
 }

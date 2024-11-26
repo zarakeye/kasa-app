@@ -115,12 +115,6 @@
   }
 }
 
-// @media (min-width: 1024px) {
-//   .cards_container {
-//     grid-template-columns: repeat(3, 250px);
-//   }
-// }
-
 @media (min-width: 1280px) {
   .cards_container {
     grid-template-columns: repeat(3, 300px);
@@ -128,11 +122,6 @@
 }
 
 @media (min-width: 1380px) {
-  // .slogan {
-  //   width: 100%;
-  // }
-  
-
   .cards_container {
     grid-template-columns: repeat(3, 340px);
   }
@@ -142,7 +131,6 @@
   .slogan {
     max-width: 1440px;
     width: 100%;
-
   }
   .cards_container {
     max-width: 1440px;

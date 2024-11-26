@@ -1,20 +1,11 @@
 @use '../../utils/styles/abstracts' as *;
 
-@keyframes slide {
+@keyframes halfRotate {
   from {
-    top: -75%;
+    transform: rotate(0deg);
   }
   to {
-    top: 0;
-  }
-}
-
-@keyframes toggleHeight {
-  from {
-    height: 0;
-  }
-  to {
-    height: auto;
+    transform: rotate(-180deg);
   }
 }
 
@@ -53,11 +44,8 @@
 
   &_arrow {
     height: 10px;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out;
     &_open {
-      transform: rotate(-180deg);
-      transition: transform 0.3s ease-in-out;
+      animation: halfRotate 0.3s ease-in-out forwards;
     }
 
     &_container {
@@ -68,27 +56,22 @@
   }
 
   &_content {
-    height: 100%;
+    height: auto;
 
     &_text, &_list {
       width: 100%;
+      font-size: $xs;
       padding: 13px 20px 19px 20px;
     }
 
     &_wrapper {
-      
+      position: relative;
       text-align: left;
       color: $text-color;
-      overflow: clip;
       align-items: flex-start;
       width: calc(100% - 40px);
-      height: 0;
     }
 
-    li {
-      font-size: $xs;
-      font-weight: $weight-regular;
-    }
   }
 }
 
@@ -102,6 +85,10 @@
     &_content {
       font-size: $l;
       line-height: 26px;
+
+      &_text, &_list {
+        font-size: 16px;
+      }
     }
   }
 }
