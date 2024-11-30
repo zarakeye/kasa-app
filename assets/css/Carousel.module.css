@@ -43,6 +43,16 @@
        object-fit: cover;
     border-radius: 10px;
   }
+  .carousel_image_counter {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+  }
   .carousel_button_previous, .carousel_button_next {
     width: 120px;
     height: 120px;

@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: 768px)/* and (orientation: landscape)*/ {
+@media (min-width: 768px) {
   .carousel {
     height: 415px;
     max-width: 100%;
@@ -46,6 +46,17 @@
       width: calc(100vw - 2 * 50px);
       object-fit: cover;
       border-radius: 10px;
+
+      &_counter {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 25px;
+        color: $complementary-text-color;
+        font-weight: $weight-medium;
+        font-size: $l;
+      }
     }
 
     &_button {

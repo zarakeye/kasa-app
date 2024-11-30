@@ -13,28 +13,32 @@ import Spinner from "../../utils/Spinner"
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
   const { flatsData } = useFetchContext();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState(false);
-  const [foundFlat, setFoundFlat] = useState<FlatType | undefined >(undefined);
+  const [foundFlat, setFoundFlat] = useState<FlatType | undefined | null >(null);
   
   useEffect(() => {
     setIsLoading(true);
-    setFoundFlat(flatsData.find((flat) => flat.id === flatId));
-  }, [flatsData, flatId]);
-
-  const isObjectEmpty = (obj: object): boolean => {
-    return Object.keys(obj).length === 0;
-  };
-
-  useEffect(() => {
-    if (foundFlat && !isObjectEmpty(foundFlat)) {
-      setIsLoading(false);
-      setError(false);
-    } else if (foundFlat && isObjectEmpty(foundFlat)) {
+    const result = flatsData.find((flat) => flat.id === flatId);
+    setFoundFlat(result);
+    
+    if (result === undefined) {
       setIsLoading(false);
       setError(true);
     }
-  }, [foundFlat])
+  }, [flatsData, flatId]);
+
+  // useEffect(() => {
+  //   // if (typeof foundFlat === 'object' && !isObjectEmpty(foundFlat)) {
+  //   if (foundFlat === undefined || ) {
+  //     setIsLoading(false);
+  //     setError(true);
+  //   // } else if (typeof foundFlat === 'object' && isObjectEmpty(foundFlat)) {
+  //   } else if (foundFlat !== null) {
+  //     setIsLoading(false);
+  //     setError(false);
+  //   }
+  // }, [foundFlat])
 
   const { title, pictures, description, host, rating, location, equipments, tags } = foundFlat || {};
 
@@ -60,17 +64,17 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {( /*typeof foundFlat === 'object' && !isObjectEmpty(foundFlat) && */ foundFlat === undefined && isLoading === true) && (
+      {( /*typeof foundFlat === 'object' && !isObjectEmpty(foundFlat) && */ foundFlat === null && isLoading === true) && (
         <div className={style.spinner_container}>
           <Spinner />
         </div>
       )}
 
-      {( typeof foundFlat === 'object' && isLoading === false && error === true) && (
+      {( foundFlat === undefined && error === true) && (
         <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
       )}
 
-      {foundFlat && typeof foundFlat === 'object' && ( 
+      {foundFlat !== undefined && foundFlat !== null && (
         <main>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}

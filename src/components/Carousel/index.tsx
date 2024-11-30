@@ -52,6 +52,7 @@ const Carousel: React.FC<CarouselProps> = ({pictures}): JSX.Element => {
           <button type="button" className={style.carousel_button_next} onClick={() => showNextImage()}>
             <img className={style.carousel_button_next_arrow} src={arrowRight} alt="flèche bouton image suivante" />
           </button>
+          <div className={style.carousel_image_counter}>{activeIndex + 1}/{pictures.length}</div>
         </>
       )}
       
