@@ -28,18 +28,6 @@ const Flat: React.FC = (): JSX.Element => {
     }
   }, [flatsData, flatId]);
 
-  // useEffect(() => {
-  //   // if (typeof foundFlat === 'object' && !isObjectEmpty(foundFlat)) {
-  //   if (foundFlat === undefined || ) {
-  //     setIsLoading(false);
-  //     setError(true);
-  //   // } else if (typeof foundFlat === 'object' && isObjectEmpty(foundFlat)) {
-  //   } else if (foundFlat !== null) {
-  //     setIsLoading(false);
-  //     setError(false);
-  //   }
-  // }, [foundFlat])
-
   const { title, pictures, description, host, rating, location, equipments, tags } = foundFlat || {};
 
   const parsedRating = rating && parseInt(rating, 10);
