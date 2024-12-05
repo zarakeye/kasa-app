@@ -56,7 +56,7 @@
   }
 
   &_content {
-    height: auto;
+    height: auto; // La valeur auto empêche d'animer
 
     &_text, &_list {
       width: 100%;

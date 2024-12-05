@@ -52,7 +52,7 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {( /*typeof foundFlat === 'object' && !isObjectEmpty(foundFlat) && */ foundFlat === null && isLoading === true) && (
+      {( foundFlat === null && isLoading === true ) && (
         <div className={style.spinner_container}>
           <Spinner />
         </div>
