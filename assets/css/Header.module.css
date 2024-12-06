@@ -1,8 +1,13 @@
 .header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1440px;
+  padding: 20px;
+  background-color: white;
+  z-index: 100;
 }
 .header_links {
   display: flex;
@@ -38,6 +43,9 @@
   }
   .app_logo_container {
     width: 210px;
+  }
+  .header {
+    padding: 45px 100px;
   }
   .header:has(ul) ul {
     -moz-column-gap: 57px;

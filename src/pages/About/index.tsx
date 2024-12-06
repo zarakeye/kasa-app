@@ -1,4 +1,4 @@
-import landscape from '../../assets/pictures/landscape_2.png'
+import landscape from '../../assets/pictures/landscape.png'
 import Dropdown from '../../components/Dropdown'
 import style from './About.module.scss'
 

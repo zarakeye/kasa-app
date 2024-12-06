@@ -16,7 +16,7 @@ const Home = (): JSX.Element => {
 
 
   return (
-    <main>
+    <main className={style.main}>
       <div className={style.slogan}>
         <div className={style.slogan_img_container}>
           <img src={landscape} alt="slogan" className={style.slogan_img} />
