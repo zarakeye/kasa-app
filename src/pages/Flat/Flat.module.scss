@@ -32,8 +32,13 @@
 
 .flat {
   &_container {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 27px;
   }
 
   &_carousel {
@@ -176,6 +181,12 @@
 
 @media (min-width: 768px) {
   .flat {
+    &_container {
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 5px;
+      padding-bottom: 50px;
+    }
     &_title {
       font-size: $xxl;
     }
@@ -234,6 +245,16 @@
         align-items: flex-end;
         margin-bottom: 0;
       }
+    }
+  }
+}
+
+@media (min-width: 1640px) {
+  .flat {
+    &_container {
+      width: 1440px;
+      padding-left: 0px;
+      padding-right: 0px;
     }
   }
 }

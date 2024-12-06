@@ -63,7 +63,7 @@ const Flat: React.FC = (): JSX.Element => {
       )}
 
       {foundFlat !== undefined && foundFlat !== null && (
-        <main>
+        <main className={style.flat_container}>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
             

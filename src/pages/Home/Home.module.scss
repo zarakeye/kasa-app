@@ -150,3 +150,11 @@
     max-width: 1440px;
   }
 }
+
+@media (min-width: 1640px) {
+   .main {
+    width: 1440px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

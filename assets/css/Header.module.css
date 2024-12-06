@@ -59,11 +59,8 @@
 @media (min-width: 1640px) {
   .header {
     width: 1440px;
+    position: initial;
     padding-left: initial;
     padding-right: initial;
-  }
-  .header_container {
-    display: flex;
-    justify-content: center;
   }
 }
