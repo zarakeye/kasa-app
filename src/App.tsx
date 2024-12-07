@@ -13,31 +13,27 @@ import style from './App.module.scss'
 const App: React.FC = () => {
   return (
     <>
-        <div className={style.appMainFlexbox}>
-          <DataContextProvider>
-            <Router>
-              <DataContextProvider>
-                <Container>
-                    {/* <Layout> */}
-                      <Header />
-                    {/* </Layout> */}
-                    {/* <Layout> */}
-                      <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route
-                          path="/flat/:flatId"
-                          element={<Flat />}
-                          errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
-                        <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-                      </Routes>
-                    {/* </Layout> */}
-                </Container>
-                <Footer />
-              </DataContextProvider>
-            </Router>
-          </DataContextProvider>
-        </div>
+      <div className={style.appMainFlexbox}>
+        <DataContextProvider>
+          <Router>
+            <DataContextProvider>
+              <Container>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route
+                    path="/flat/:flatId"
+                    element={<Flat />}
+                    errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
+                  <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+                </Routes>
+              </Container>
+              <Footer />
+            </DataContextProvider>
+          </Router>
+        </DataContextProvider>
+      </div>
     </>
   )
 }
