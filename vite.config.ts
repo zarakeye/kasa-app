@@ -1,16 +1,13 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-/** @type {import('vite').UserConfig} */
+// /** @type {import('vite').UserConfig} */
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
   css: {
     preprocessorOptions: {
       scss: {
-        javascriptEnabled: true,
         additionalData: `@use "./src/utils/styles/_abstracts.scss";`,
       },
     },
