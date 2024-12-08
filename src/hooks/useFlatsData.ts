@@ -29,6 +29,19 @@ const useFlatsData = (): UseFlatDataReturn => {
   const [isDataLoading, setDataLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+/**
+ * Fetches flat data from a JSON file located at `/datas/flats.json`.
+ * 
+ * Sets loading state to true at the start of the fetch and resets any existing error state.
+ * 
+ * If the fetch is successful and the response is valid JSON, updates the `flatsData` state with the retrieved data.
+ * If the response is not ok or the content is not valid JSON, throws an error.
+ * 
+ * Handles fetch errors by setting the `error` state and logs the error message. 
+ * If the fetch is aborted, logs a specific message and returns early.
+ * 
+ * Finally, sets the loading state to false after the fetch attempt is complete, regardless of success or failure.
+ */
   const fetchFlats = async () => {
     setDataLoading(true);
     setError(null);

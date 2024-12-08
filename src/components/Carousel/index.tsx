@@ -12,6 +12,13 @@ interface ImageInfo {
   height: number;
 }
 
+  /**
+   * Carousel component to display a list of images.
+   *
+   * @param {{pictures: string[]}} props
+   * @prop {string[]} pictures List of image URLs to display in the carousel.
+   * @returns {JSX.Element} JSX element representing a carousel of images.
+   */
 const Carousel: React.FC<CarouselProps> = ({pictures}): JSX.Element => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [previousIndex, setPreviousIndex] = useState<number>(pictures.length - 1);
@@ -23,6 +30,10 @@ const Carousel: React.FC<CarouselProps> = ({pictures}): JSX.Element => {
     setNextIndex((previousIndex + 1) % pictures.length);
   }
 
+  /**
+   * Set the activeIndex state to the value of nextIndex, and updates the values of
+   * previousIndex and nextIndex accordingly.
+   */
   const showNextImage = () => {
     setActiveIndex(nextIndex);
     setPreviousIndex((nextIndex - 1 + pictures.length) % pictures.length);

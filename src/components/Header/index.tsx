@@ -3,6 +3,12 @@ import logo from '../../assets/pictures/logo.svg'
 import style from './Header.module.scss'
 import { useEffect, useState } from 'react'
 
+/**
+ * Header component that renders a sticky navigation bar with a logo and links.
+ * The active link is highlighted based on the current route using `useLocation`.
+ * 
+ * @returns JSX.Element - The header element with logo and navigation links.
+ */
 const Header = (): JSX.Element => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState('/');

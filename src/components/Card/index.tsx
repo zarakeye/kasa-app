@@ -6,7 +6,14 @@ interface CardProps {
  flat: Flat,
 }
 
-
+/**
+ * Card component that displays a thumbnail of a flat with a cover image and title.
+ * Wraps the content in a link to the flat's details page.
+ *
+ * @param {CardProps} props - The properties of the component.
+ * @param {Flat} props.flat - The flat data to be displayed, including id, cover image, and title.
+ * @returns {JSX.Element} - A React element that renders the card.
+ */
 const Card: React.FC<CardProps> = ({flat}): JSX.Element => {
   return (
     <>

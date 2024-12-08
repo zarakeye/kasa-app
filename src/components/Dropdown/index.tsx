@@ -8,6 +8,19 @@ interface DropdownProps {
   content: string | string[];
 }
 
+/**
+ * The Dropdown component is used to display a dropdown content.
+ *
+ * It will display the content, passed as a prop, as either a list of items or a single text block,
+ * depending on the type of the content.
+ *
+ * The isOpen prop is used to toggle the visibility of the content.
+ *
+ * @prop {string} title - The title of the dropdown.
+ * @prop {string | string[]} content - The content to be displayed. Can be either a string or an array of strings.
+ *
+ * @return {JSX.Element} The JSX element representing the dropdown.
+ */
 const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const arrow = useRef<HTMLImageElement>(null);

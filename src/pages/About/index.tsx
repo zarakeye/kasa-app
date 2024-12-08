@@ -2,6 +2,15 @@ import landscape from '../../assets/pictures/landscape.png'
 import Dropdown from '../../components/Dropdown'
 import style from './About.module.scss'
 
+/**
+ * "À propos" is the "About" page of the Kasa application.
+ *
+ * This page contains information about Kasa company, as well as details about the
+ * company's values and commitments.
+ *
+ * The page is composed of a landscape image and several dropdowns that contain
+ * information about the reliability, respect, service and security of the company.
+ */
 const About = (): JSX.Element => {
   const fiabilityContent: string = 'Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont verifiables par nos soins.'
   

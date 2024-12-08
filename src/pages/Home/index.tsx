@@ -4,6 +4,15 @@ import landscape from '../../assets/pictures/landscape.png'
 import style from './Home.module.scss'
 import { useFetchContext } from "../../hooks/useFetchContext"
 
+/**
+ * Home
+ *
+ * The Home component is the first page displayed by the application.
+ * It displays a slogan with a background image and a list of cards
+ * representing the available flats.
+ *
+ * @returns {JSX.Element} The Home component.
+ */
 const Home = (): JSX.Element => {
   const fetchedContext = useFetchContext();
 

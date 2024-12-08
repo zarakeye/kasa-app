@@ -1,7 +1,6 @@
 @use './utils/styles/reset.scss';
 @use './utils/styles/abstracts' as *;
 
-/* montserrat-latin-ext-wght-normal */
 :root {
   font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
   font-weight: 400;

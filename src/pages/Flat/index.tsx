@@ -10,6 +10,15 @@ import { useFetchContext } from "../../hooks/useFetchContext"
 import { Flat as FlatType } from "../../hooks/useFlatsData"
 import Spinner from "../../utils/Spinner"
 
+  /**
+   * Render the flat page.
+   * 
+   * It fetches the flat data from the context and render the page.
+   * If the flat is not found, it renders an Error404 component.
+   * If the flat is loading, it renders a Spinner component.
+   * 
+   * @returns {JSX.Element} The flat page component
+   */
 const Flat: React.FC = (): JSX.Element => {
   const { flatId } = useParams();
   const { flatsData } = useFetchContext();
