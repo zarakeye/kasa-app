@@ -1,14 +1,5 @@
 @use '../../utils/styles/abstracts' as *;
 
-@keyframes halfRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-180deg);
-  }
-}
-
 .dropdown {
   display: flex;
   flex-direction: column;
@@ -16,7 +7,6 @@
   margin-top: 20px;
   border-radius: 10px;
   height: calc(100% + 20px);
-  transition:  0.3s ease-in-out;
   
   &_header {
     position: sticky;
@@ -44,9 +34,17 @@
 
   &_arrow {
     height: 10px;
-    &_open {
-      animation: halfRotate 0.3s ease-in-out forwards;
+    transform: rotate(0deg);
+    // transition: transform 0.4s ease-in-out;
+    @include transition(transform);
+
+    &.open {
+      transform: rotate(-180deg);
     }
+    &:not(.open) {
+      transform: rotate(0deg);
+    }
+
 
     &_container {
       display: flex;
@@ -55,30 +53,21 @@
     }
   }
 
-  &_content {
-    &_container {
-      height: 0;
-      overflow: clip;
-      transition: height 1s ease-in-out;
+  &_content_wrapper {
+    text-align: left;
+    color: $text-color;
+    align-items: flex-start;
+    width: calc(100% - 40px);
+    overflow: clip;
+    max-height: 0;
+    // transition: max-height 0.4s ease-in-out;
+    @include transition(max-height);
 
-      &.open {
-        height: 100%;
-      }
+    &.open {
+      max-height: 1000px;
     }
-
-    &_wrapper {
-      // position: relative;
-      text-align: left;
-      color: $text-color;
-      align-items: flex-start;
-      width: calc(100% - 40px);
-      overflow: clip;
-      height: 0;
-      transition: height 1s ease-in-out;
-
-      &.open {
-        height: auto;
-      }
+    &:not(.open) {
+      max-height: 0;
     }
   }
 }
