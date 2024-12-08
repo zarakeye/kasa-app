@@ -1,0 +1,30 @@
+@use '../../utils/styles/abstracts' as *;
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-65%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown_content {
+  &_text, &_list {
+    width: 100%;
+    font-size: $xs;
+    padding: 13px 20px 19px 20px;
+    opacity: 0;
+    // transform: translateY(-65%);
+    margin-top: -30%;
+    // transform: margin-top 0.3s ease-in-out;
+    transition: margin-top 1s ease-in-out;
+
+    &.open {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+}

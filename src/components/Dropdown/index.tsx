@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import style from './Dropdown.module.scss';
 import chevron from '../../assets/pictures/chevron.svg'
+import DropdownContent from "../DropdownContent";
 
 interface DropdownProps {
   title: string;
@@ -13,6 +14,7 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
   const contentWrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+
   useEffect(() => {
     if (isOpen) {
       arrow.current?.classList.add(style.dropdown_arrow_open);
@@ -21,19 +23,19 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
     }
   }, [isOpen])
 
-  const renderContent = () => {
-    return Array.isArray(content) ? (
-      <ul className={style.dropdown_content_list}>
-        {content.map((item, index) => (
-          <li key={index} className={style.dropdown_content_item}>
-            {item}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p className={style.dropdown_content_text}>{content}</p>
-    )
-  }
+  // const renderContent = () => {
+  //   return Array.isArray(content) ? (
+  //     <ul className={`${style.dropdown_content_list } ${isOpen ? style.open : ''}`}>
+  //       {content.map((item, index) => (
+  //         <li key={index} className={style.dropdown_content_item}>
+  //           {item}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   ) : (
+  //     <p className={`${style.dropdown_content_text} ${isOpen ? style.open : ''}`}>{content}</p>
+  //   )
+  // }
 
   return (
     <aside className={style.dropdown} >
@@ -43,19 +45,19 @@ const Dropdown: React.FC<DropdownProps> = ({title, content}): JSX.Element => {
           <img ref={arrow} className={style.dropdown_arrow} src={chevron} alt="flèche" />
         </div>
       </header>
-      {isOpen && (
         <div
           ref={contentWrapperRef}
-          className={ `${style.dropdown_content_wrapper} ${isOpen ? style.open : style.close}`}
+          className={`${style.dropdown_content_wrapper} ${isOpen ? style.open : ''}`}
         >
+        {/* {isOpen && ( */}
           <div
             ref={contentRef}
-            className={style.dropdown_content}
+            className={`${style.dropdown_content_container} ${isOpen ? style.open : ''}`} id={style.dropdown_content}
           >
-            {renderContent()}
+            <DropdownContent content={content} isOpen={isOpen} />
           </div>
-        </div>
-      )}
+        {/* )} */}
+      </div>
     </aside>
   )
 }

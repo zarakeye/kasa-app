@@ -56,22 +56,30 @@
   }
 
   &_content {
-    height: auto; // La valeur auto empêche d'animer
+    &_container {
+      height: 0;
+      overflow: clip;
+      transition: height 1s ease-in-out;
 
-    &_text, &_list {
-      width: 100%;
-      font-size: $xs;
-      padding: 13px 20px 19px 20px;
+      &.open {
+        height: 100%;
+      }
     }
 
     &_wrapper {
-      position: relative;
+      // position: relative;
       text-align: left;
       color: $text-color;
       align-items: flex-start;
       width: calc(100% - 40px);
-    }
+      overflow: clip;
+      height: 0;
+      transition: height 1s ease-in-out;
 
+      &.open {
+        height: auto;
+      }
+    }
   }
 }
 
