@@ -54,7 +54,9 @@ const Carousel: React.FC<CarouselProps> = ({pictures}): JSX.Element => {
 
   return (
     <div className={style.carousel}>
-      <img className={style.carousel_image} src={pictures[activeIndex]} alt="image" />
+      <img className={style.carousel_image} src={pictures[previousIndex]} alt="Photo précedente" />
+      <img className={style.carousel_image + ' ' + style.carousel_image_active} src={pictures[activeIndex]} alt="Photo actuelle" />
+      <img className={style.carousel_image} src={pictures[nextIndex]} alt="Photo suivante" />
       {pictures.length > 1 && (
         <>
           <button type="button" className={style.carousel_button_previous} onClick={() => showPreviousImage()}>

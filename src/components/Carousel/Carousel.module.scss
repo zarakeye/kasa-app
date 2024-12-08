@@ -11,6 +11,10 @@
     object-fit: cover;
     border-radius: 10px;
     width: calc(100vw - 2 * 10px);
+
+    &.active {
+      width: 100%;
+    }
   }
 
   &_button {

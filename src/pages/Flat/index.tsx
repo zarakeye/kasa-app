@@ -27,14 +27,29 @@ const Flat: React.FC = (): JSX.Element => {
   const [foundFlat, setFoundFlat] = useState<FlatType | undefined | null >(null);
   
   useEffect(() => {
-    setIsLoading(true);
-    const result = flatsData.find((flat) => flat.id === flatId);
-    setFoundFlat(result);
-    
-    if (result === undefined) {
-      setIsLoading(false);
-      setError(true);
-    }
+  /**
+   * Fetches the flat data from the context.
+   * 
+   * It finds the flat that matches the given flatId and sets the foundFlat state.
+   * If the flat is not found, it sets the error state to true.
+   * 
+   * @returns {Promise<void>} A promise that resolves when the fetching is complete.
+   */
+    const fetchData = () => async () => {
+      setIsLoading(true);
+
+      try {
+        const result = flatsData.find((flat) => flat.id === flatId);
+        setFoundFlat(result);
+      } catch (error) {
+        console.error(error);
+        setError(true); 
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData()();
   }, [flatsData, flatId]);
 
   const { title, pictures, description, host, rating, location, equipments, tags } = foundFlat || {};
@@ -61,17 +76,17 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      {( foundFlat === null && isLoading === true ) && (
+      { isLoading === true && (
         <div className={style.spinner_container}>
           <Spinner />
         </div>
       )}
 
-      {( foundFlat === undefined && error === true) && (
+      { error === true && (
         <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
       )}
 
-      {foundFlat !== undefined && foundFlat !== null && (
+      {foundFlat && (
         <main className={style.flat_container}>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
