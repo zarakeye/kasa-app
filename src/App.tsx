@@ -43,7 +43,7 @@ const App: React.FC = () => {
                 <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
               </Routes>
             </Container>
-              <Footer />
+            <Footer />
           </Router>
         </DataContextProvider>
       </div>
