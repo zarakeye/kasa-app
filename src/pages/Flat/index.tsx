@@ -27,20 +27,28 @@ const Flat: React.FC = (): JSX.Element => {
   const [foundFlat, setFoundFlat] = useState<FlatType | undefined | null >(null);
   
   useEffect(() => {
+  
   /**
-   * Fetches the flat data from the context.
+   * Fetches the flat data from the context and updates the state.
    * 
-   * It finds the flat that matches the given flatId and sets the foundFlat state.
-   * If the flat is not found, it sets the error state to true.
+   * It sets the loading state to true at the start of the fetch and resets any existing error state.
    * 
-   * @returns {Promise<void>} A promise that resolves when the fetching is complete.
+   * If the fetch is successful, it updates the `foundFlat` state with the retrieved data.
+   * If the response is not ok or the content is not valid JSON, it throws an error and sets the `error` state.
+   * 
+   * Finally, it sets the loading state to false after the fetch attempt is complete, regardless of success or failure.
    */
-    const fetchData = () => async () => {
+
+    const fetchData = () => {
       setIsLoading(true);
 
       try {
         const result = flatsData.find((flat) => flat.id === flatId);
         setFoundFlat(result);
+
+        if (!result) {
+          throw new Error('Flat not found');
+        }
       } catch (error) {
         console.error(error);
         setError(true); 
@@ -49,8 +57,8 @@ const Flat: React.FC = (): JSX.Element => {
       }
     };
 
-    fetchData()();
-  }, [flatsData, flatId]);
+    fetchData();
+  }, [flatsData, flatId, foundFlat]);
 
   const { title, pictures, description, host, rating, location, equipments, tags } = foundFlat || {};
 
@@ -74,8 +82,12 @@ const Flat: React.FC = (): JSX.Element => {
 
   const [firstName, lastName] = host?.name?.split(' ') || [];
 
+  console.log('error', error)
+
   return (
     <>
+      <main className={style.flat_container}>
+
       { isLoading === true && (
         <div className={style.spinner_container}>
           <Spinner />
@@ -87,7 +99,7 @@ const Flat: React.FC = (): JSX.Element => {
       )}
 
       {foundFlat && (
-        <main className={style.flat_container}>
+        <>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
             
@@ -122,8 +134,9 @@ const Flat: React.FC = (): JSX.Element => {
             <Dropdown title="Description" content={description ?? ''} />
             <Dropdown title="Équipements" content={equipments ?? []} />
           </div>
-        </main>
+        </>
       )}
+      </main>
     </>
   )
 }
