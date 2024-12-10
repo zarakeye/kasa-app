@@ -34,18 +34,16 @@ const App: React.FC = () => {
       <div className={style.appMainFlexbox}>
         <DataContextProvider>
           <Router>
-            <DataContextProvider>
-              <Container>
-                <Header />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/flat/:flatId" element={<Flat />} />
-                  <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
-                </Routes>
-              </Container>
+            <Container>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/flat/:flatId" element={<Flat />} />
+                <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
+              </Routes>
+            </Container>
               <Footer />
-            </DataContextProvider>
           </Router>
         </DataContextProvider>
       </div>
