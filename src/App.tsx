@@ -48,8 +48,7 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
-                  <Route path="/flat/:flatId" element={<Flat />}
-                    errorElement={<Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />} />
+                  <Route path="/flat/:flatId" element={<Flat />} />
                   <Route path="*" element={<Error404 message="Oups ! La page que vous demandez n'existe pas" />} />
                 </Routes>
               </Container>
