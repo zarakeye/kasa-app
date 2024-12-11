@@ -86,7 +86,6 @@ const Flat: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <main className={style.flat_container}>
 
       { isLoading === true && (
         <div className={style.spinner_container}>
@@ -99,7 +98,7 @@ const Flat: React.FC = (): JSX.Element => {
       )}
 
       {foundFlat && (
-        <>
+        <main className={style.flat_container}>
           <h1 className={style.sr_only}>Fiche de l'appartement</h1>
           {pictures && <Carousel pictures={pictures} />}
             
@@ -134,9 +133,8 @@ const Flat: React.FC = (): JSX.Element => {
             <Dropdown title="Description" content={description ?? ''} />
             <Dropdown title="Équipements" content={equipments ?? []} />
           </div>
-        </>
+        </main>
       )}
-      </main>
     </>
   )
 }
