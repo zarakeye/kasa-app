@@ -88,13 +88,17 @@ const Flat: React.FC = (): JSX.Element => {
     <>
 
       { isLoading === true && (
-        <div className={style.spinner_container}>
-          <Spinner />
-        </div>
+        <main className={style.flat_container}>
+          <div className={style.spinner_container}>
+            <Spinner />
+          </div>
+        </main>
       )}
 
       { error === true && (
-        <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
+        <main className={style.flat_container}>
+          <Error404 message="Oups ! La référence d'appartement que vous demandez n'existe pas" />
+        </main>
       )}
 
       {foundFlat && (
